@@ -5,6 +5,7 @@ import { PUBLIC_ROWS, PUBLIC_COLUMNS } from '$env/static/public';
 const rowCount = Number.parseInt(PUBLIC_ROWS, 10);
 const columnCount = Number.parseInt(PUBLIC_COLUMNS, 10);
 
+// Matrix representing all the vertical square borders in the grid
 let verticals: PlayerDesignation[][] = Array.from({ length: rowCount }, () =>
 	Array.from({ length: columnCount + 1 }, () => null)
 );

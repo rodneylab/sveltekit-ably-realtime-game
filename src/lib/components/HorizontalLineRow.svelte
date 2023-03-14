@@ -1,10 +1,13 @@
 <script lang="ts">
 	import horizontals from '$lib/shared/stores/horizontalLines';
+	import myTurn from '$lib/shared/stores/myTurn';
 	import type { PlayerDesignation } from '$lib/types';
+	import type { Types } from 'ably';
 
+	export let channel: Types.RealtimeChannelPromise | null;
+	export let player: PlayerDesignation;
 	export let rowIndex: number;
 	export let columnCount: number;
-	export let player: PlayerDesignation;
 </script>
 
 <div>
@@ -13,18 +16,17 @@
 			class="line-h"
 			class:player-1={$horizontals[rowIndex][columnIndex] === 'player1'}
 			class:player-2={$horizontals[rowIndex][columnIndex] === 'player2'}
-			disabled={$horizontals[rowIndex][columnIndex] != null}
+			disabled={!channel || !$myTurn || $horizontals[rowIndex][columnIndex] != null}
 			on:click={() => {
-				// set horizontals[rowIndex,columnIndex] to player and maintain all other elements
-				horizontals.set([
-					...$horizontals.slice(0, rowIndex),
-					[
-						...$horizontals[rowIndex].slice(0, columnIndex),
+				myTurn.set(false);
+				if (channel) {
+					channel.publish('turn', {
 						player,
-						...$horizontals[rowIndex].slice(columnIndex + 1)
-					],
-					...$horizontals.slice(rowIndex + 1)
-				]);
+						vertical: false,
+						row: rowIndex,
+						column: columnIndex
+					});
+				}
 			}}
 			><span class="screen-reader-text"
 				>{`Mark horizontal line row ${rowIndex + 1}, column ${columnIndex + 1}`}</span
