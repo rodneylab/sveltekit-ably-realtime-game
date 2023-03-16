@@ -1,11 +1,10 @@
-import { PUBLIC_COLUMNS, PUBLIC_ROWS } from '$env/static/public';
+import app from '$lib/configuration';
 import horizontals from '$lib/shared/stores/horizontalLines';
 import verticals from '$lib/shared/stores/verticalLines';
 import type { GridSquareDesignation } from '$lib/types';
 import { derived } from 'svelte/store';
 
-const rowCount = Number.parseInt(PUBLIC_ROWS, 10);
-const columnCount = Number.parseInt(PUBLIC_COLUMNS, 10);
+const { rowCount, columnCount } = app;
 
 let initialGrid: GridSquareDesignation[][] = Array.from({ length: rowCount }, () =>
 	Array.from({ length: columnCount }, () => null)

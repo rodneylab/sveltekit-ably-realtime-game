@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { PUBLIC_ABLY_CHANNEL, PUBLIC_COLUMNS, PUBLIC_ROWS } from '$env/static/public';
 	import GameMeta from '$lib/components/GameMeta.svelte';
 	import Grid from '$lib/components/Grid.svelte';
 	import NameInput from '$lib/components/NameInput.svelte';
@@ -19,7 +18,9 @@
 
 	export let data: PageData;
 
-	const ablyChannelName = PUBLIC_ABLY_CHANNEL;
+	import app from '$lib/configuration';
+
+	const { ablyChannelName, rowCount, columnCount } = app;
 
 	let [player1Score, player2Score] = $score;
 	$: [player1Score, player2Score] = $score;
@@ -34,8 +35,6 @@
 
 	let myId = (playerIds && playerIds[playerNumber - 1]) ?? null;
 
-	const rowCount = Number.parseInt(PUBLIC_ROWS, 10);
-	const columnCount = Number.parseInt(PUBLIC_COLUMNS, 10);
 	let turnsRemaining = 2 * columnCount * rowCount + rowCount + columnCount;
 	let playworthyCells = columnCount * rowCount;
 
