@@ -17,7 +17,7 @@ let games: Game[] = [];
 const ably = new Ably.Realtime.Promise(ABLY_API_KEY);
 
 export const actions: Actions = {
-	login: async ({ cookies, request }) => {
+	play: async ({ cookies, request }) => {
 		const form = await request.formData();
 		const name = form.get('name');
 		if (typeof name === 'string' && name) {

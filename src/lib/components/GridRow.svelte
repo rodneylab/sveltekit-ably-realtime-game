@@ -1,8 +1,8 @@
 <script lang="ts">
+	import VerticalLine from '$lib/components/VerticalLine.svelte';
 	import verticals from '$lib/shared/stores/verticalLines';
 	import type { GridSquareDesignation, PlayerDesignation } from '$lib/types';
 	import type { Types } from 'ably';
-	import VerticalLine from '$lib/components/VerticalLine.svelte';
 
 	export let channel: Types.RealtimeChannelPromise | null;
 	export let gridRow: GridSquareDesignation[];
@@ -26,20 +26,22 @@
 <style>
 	.row-wrapper {
 		display: flex;
-		width: 100%;
 	}
 
 	.square {
-		background-color: grey;
-		width: 3rem;
-		height: 3rem;
+		--_square-margin: var(--spacing-px);
+		--_square-side-length: calc(var(--square-size) - (2 * var(--_square-margin)));
+
+		width: var(--_square-side-length);
+		height: var(--_square-side_length);
+		margin: var(--_square-margin);
 	}
 
 	.player-1 {
-		background-color: red;
+		background-color: var(--colour-primary-tint-50);
 	}
 
 	.player-2 {
-		background-color: blue;
+		background-color: var(--colour-secondary-tint-50);
 	}
 </style>

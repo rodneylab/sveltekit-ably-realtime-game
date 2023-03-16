@@ -1,11 +1,15 @@
 <script lang="ts">
 	import { PUBLIC_ABLY_CHANNEL, PUBLIC_COLUMNS, PUBLIC_ROWS } from '$env/static/public';
+	import GameMeta from '$lib/components/GameMeta.svelte';
 	import Grid from '$lib/components/Grid.svelte';
+	import NameInput from '$lib/components/NameInput.svelte';
+	import Rules from '$lib/components/Rules.svelte';
 	import grid from '$lib/shared/stores/grid';
 	import horizontals from '$lib/shared/stores/horizontalLines';
 	import myTurn from '$lib/shared/stores/myTurn';
 	import score from '$lib/shared/stores/score';
 	import verticals from '$lib/shared/stores/verticalLines';
+	import '$lib/styles/fonts.css';
 	import '$lib/styles/global.css';
 	import type { PlayerDesignation } from '$lib/types';
 	import type { Types } from 'ably';
@@ -23,7 +27,7 @@
 	$: ({ name, player = null, playerIds, token } = data ?? {});
 
 	let channel: Types.RealtimeChannelPromise | null = null;
-	let serviceStatus = '';
+	$: serviceStatus = channel ? 'Connected to Ably' : 'Offline';
 
 	let playerNumber = (player && player === 'player1' ? 1 : 2) ?? 0;
 	let otherPlayerNumber = (player && player === 'player1' ? 2 : 1) ?? 0;
@@ -39,7 +43,7 @@
 		(player && playerNumber === 1 ? 'player2' : 'player1') ?? null;
 
 	onMount(async () => {
-		serviceStatus = 'Offline';
+		// serviceStatus = 'Offline';
 		myTurn.set(player === 'player1');
 		const ably = new Realtime.Promise({
 			...token,
@@ -109,65 +113,56 @@
 				);
 			}
 		});
-
-		if (channel) {
-			serviceStatus = 'Connected to ably';
-		}
 	});
+
+	const title = 'Sqvuably: SvelteKit Ably Realtime Squares Game';
+	const description = 'Sqvuably: SvelteKit Ably Squares Realtime Multiplayer Game';
 </script>
 
-<main>
-	<h1>Sqvuably: SvelteKit Ably Squares Realtime Multiplayer Game</h1>
-	<p>Network Status: {serviceStatus}</p>
-	<p>
-		{playerNumber === 1 ? name : 'Player 1'}
-		{player1Score}&thinsp;&ndash;&thinsp;{player2Score}
-		{playerNumber === 2 ? name : 'Player 2'}
-	</p>
-	{#if !name}
-		<form action="?/login" method="POST">
-			<label for="name">Name</label>
-			<input id="name" type="text" name="name" placeholder="Your login name" />
-			<button type="submit">Login</button>
-		</form>
-	{:else}
-		Playing as {name}
-		{#if player}
-			<div
-				class="player-indicator"
-				class:player-1={player === 'player1'}
-				class:player-2={player === 'player2'}
-			/>{/if}
-		{#if playworthyCells !== 0}
-			<p>{$myTurn ? 'Your turn!' : `Player ${otherPlayerNumber}’s turn...`}</p>
-		{:else if player1Score > player2Score}
-			Player 1 wins
-		{:else if player2Score > player1Score}
-			Player 2 wins
-		{:else}
-			Draw
-		{/if}
-	{/if}
+<svelte:head>
+	<title>{title}</title>
+	<meta title="description" content={description} />
+</svelte:head>
 
+<main>
+	<h1>Sqvuably</h1>
+	<h2>Squares with Svelte and Ably</h2>
+	{#if !name}
+		<NameInput />
+	{:else}
+		<GameMeta
+			{name}
+			{player}
+			{serviceStatus}
+			{playerNumber}
+			{otherPlayerNumber}
+			{player1Score}
+			{player2Score}
+			{playworthyCells}
+		/>
+	{/if}
 	<Grid {channel} {player} />
+	<Rules />
 </main>
 
-<style>
+<style lang="postcss">
 	main {
 		display: flex;
 		flex-direction: column;
+		width: calc(var(--max-width-full) - var(--spacing-12));
+		margin: var(--spacing-6) var(--spacing-outer) var(--spacing-24);
+		max-width: var(--max-width-full);
+		min-height: 100vh;
 	}
 
-	.player-indicator {
-		width: 1rem;
-		height: 1rem;
+	@media screen and (width > 768px) {
+		main {
+			width: min(var(--max-width-full) - var(--spacing-24), var(--max-width-wrapper));
+			margin: var(--spacing-6) auto var(--spacing-24);
+		}
 	}
 
-	.player-1 {
-		background-color: red;
-	}
-
-	.player-2 {
-		background-color: blue;
+	h2 {
+		margin-bottom: var(--spacing-16);
 	}
 </style>

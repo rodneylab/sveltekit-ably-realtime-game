@@ -1,54 +1,51 @@
 <script lang="ts">
+	import horizontals from '$lib/shared/stores/horizontalLines';
 	import myTurn from '$lib/shared/stores/myTurn';
-	import verticals from '$lib/shared/stores/verticalLines';
 	import type { PlayerDesignation } from '$lib/types';
 	import type { Types } from 'ably';
 
 	export let channel: Types.RealtimeChannelPromise | null;
+	export let player: PlayerDesignation;
 	export let rowIndex: number;
 	export let columnIndex: number;
-	export let player: PlayerDesignation;
-
-	let markedPlayer1 = $verticals[rowIndex][columnIndex] === 'player1';
-	let markedPlayer2 = $verticals[rowIndex][columnIndex] === 'player2';
-	let label = `Mark vertical line row ${rowIndex + 1}, column ${columnIndex + 1}`;
-	if (markedPlayer1) label = 'Marked player 1';
-	if (markedPlayer2) label = 'Marked player 2';
-	let disabled = !channel || !$myTurn || markedPlayer1 || markedPlayer2;
+	const disabled = !channel || !$myTurn || $horizontals[rowIndex][columnIndex] != null;
 </script>
 
 <button
-	aria-label={label}
-	class="line-v"
-	class:player-1={markedPlayer1}
-	class:player-2={markedPlayer2}
+	class="line-h"
+	class:player-1={$horizontals[rowIndex][columnIndex] === 'player1'}
+	class:player-2={$horizontals[rowIndex][columnIndex] === 'player2'}
+	{disabled}
 	style:--hover-colour={player === 'player1'
 		? 'var(--colour-primary-tint-50)'
 		: 'var(--colour-secondary-tint-50)'}
-	{disabled}
 	on:click={() => {
 		myTurn.set(false);
 		if (channel) {
 			channel.publish('turn', {
 				player,
-				vertical: true,
+				vertical: false,
 				row: rowIndex,
 				column: columnIndex
 			});
 		}
 	}}
-/>
+	><span class="screen-reader-text"
+		>{`Mark horizontal line row ${rowIndex + 1}, column ${columnIndex + 1}`}</span
+	></button
+>
 
 <style>
 	button {
 		--_hover-colour: var(--hover-colour, var(--colour-alt));
 
 		background-color: var(--colour-alt-tint-50-alpha-80);
-		width: var(--grid-line-width);
-		height: var(--square-size);
+		width: var(--square-size);
+		height: var(--grid-line-width);
 		padding: var(--spacing-0);
 		border-radius: var(--spacing-px-2);
 	}
+
 	button:not(:disabled):hover {
 		background-color: var(--_hover-colour);
 	}
@@ -57,14 +54,7 @@
 		background-color: var(--colour-primary);
 	}
 
-	.player-1:focus {
-		outline: 1px solid var(--colour-primary);
-	}
-
 	.player-2 {
 		background-color: var(--colour-secondary);
-	}
-	.player-2:focus {
-		outline: 1px solid var(--colour-secondary);
 	}
 </style>
