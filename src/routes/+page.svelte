@@ -25,8 +25,8 @@
 
 	let [player1Score, player2Score] = $score;
 	$: [player1Score, player2Score] = $score;
-	let { name, player = null, playerIds, token } = data ?? {};
-	$: ({ name, player = null, playerIds, token } = data ?? {});
+	let { gameId, name, player = null, playerIds, token } = data ?? {};
+	// $: ({ name, player = null, playerIds, token } = data ?? {});
 
 	let channel: Types.RealtimeChannelPromise | null = null;
 	$: serviceStatus = channel ? 'Connected to Ably' : 'Offline';
@@ -41,6 +41,8 @@
 
 	let otherPlayer: PlayerDesignation =
 		(player && playerNumber === 1 ? 'player2' : 'player1') ?? null;
+
+	let debugData = '';
 
 	onMount(async () => {
 		// serviceStatus = 'Offline';
@@ -96,6 +98,7 @@
 				const playerUpdatedScore = $score[messagePlayerNumber - 1];
 
 				// if the player scored they get another turn
+				debugData = `${debugData}\n${JSON.stringify(messageData, null, 2)}`;
 				if (playerUpdatedScore > playerInitialScore) {
 					myTurn.set(messagePlayer === player);
 				} else {
@@ -115,8 +118,8 @@
 		});
 	});
 
-	const title = 'Sqvuably: SvelteKit Ably Realtime Squares Game';
-	const description = 'Sqvuably: SvelteKit Ably Squares Realtime Multiplayer Game';
+	const title = 'Sqvuably: SvelteKit Ably Real-time Squares Game';
+	const description = 'Sqvuably: SvelteKit Ably Squares real-time multiplayer game';
 </script>
 
 <svelte:head>
@@ -132,6 +135,7 @@
 		<NameInput />
 	{:else}
 		<GameMeta
+			{gameId}
 			{name}
 			{player}
 			{serviceStatus}
@@ -143,6 +147,8 @@
 		/>
 	{/if}
 	<Grid {channel} {player} />
+	<pre>{debugData}</pre>
+
 	<Rules />
 </main>
 <Footer />

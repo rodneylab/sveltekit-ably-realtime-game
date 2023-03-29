@@ -2,6 +2,7 @@
 	import myTurn from '$lib/shared/stores/myTurn';
 	import type { PlayerDesignation } from '$lib/types';
 
+	export let gameId: string;
 	export let name: string;
 	export let player: PlayerDesignation;
 	export let serviceStatus: string;
@@ -20,7 +21,7 @@
 			class:player-2={player === 'player2'}
 		/>{/if}Playing as {name}
 </div>
-<p class="network-status">Network Status: {serviceStatus}</p>
+<p class="network-status">Network Status: {serviceStatus}, GAME-ID: {gameId}</p>
 <div class="score">
 	<span class="score-1-label">
 		{playerNumber === 1 ? name : 'Player One'}

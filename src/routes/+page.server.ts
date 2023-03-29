@@ -4,6 +4,7 @@ import { Temporal } from '@js-temporal/polyfill';
 import { error as svelteKitError, fail, redirect } from '@sveltejs/kit';
 import Ably from 'ably';
 import type { Actions, PageServerLoad } from './$types';
+import type { Types } from 'ably';
 
 interface Game {
 	gameId: string;
@@ -14,7 +15,12 @@ interface Game {
 // only player ids are stored here a no other player details
 let games: Game[] = [];
 
-const ably = new Ably.Realtime.Promise(ABLY_API_KEY);
+let ably: Types.RealtimePromise | null = null;
+try {
+	ably = new Ably.Realtime.Promise(ABLY_API_KEY);
+} catch (error: unknown) {
+	// console.error({ error });
+}
 
 export const actions: Actions = {
 	play: async ({ cookies, request }) => {
@@ -52,6 +58,9 @@ export const actions: Actions = {
 
 export const load: PageServerLoad = async function load({ cookies, url }) {
 	try {
+		if (!ably) {
+			throw svelteKitError(502, 'Bad Gateway');
+		}
 		const session = cookies.get('session');
 		if (session) {
 			const { clientId, gameId, name } = JSON.parse(session);
@@ -65,9 +74,14 @@ export const load: PageServerLoad = async function load({ cookies, url }) {
 			} else if (player2 === clientId) {
 				player = 'player2';
 			}
-			return { name, player, token, playerIds: [player1, player2] };
+			return { gameId, name, player, token, playerIds: [player1, player2] };
 		}
 	} catch (error: unknown) {
+		const httpError = error as { status: number; message: string };
+		if (httpError.status && httpError.message) {
+			const { status, message } = httpError;
+			console.log({ message, status });
+		}
 		const { pathname } = url;
 		const message = `Error in server load function for ${pathname}: ${error as string}`;
 		console.error(message);

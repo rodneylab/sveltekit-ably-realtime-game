@@ -27,7 +27,7 @@
 		: 'var(--colour-secondary-tint-50)'}
 	{disabled}
 	on:click={() => {
-		myTurn.set(false);
+		// myTurn.set(false);
 		if (channel) {
 			channel.publish('turn', {
 				player,
@@ -49,6 +49,8 @@
 		padding: var(--spacing-0);
 		border-radius: var(--spacing-px-2);
 	}
+
+	button:not(:disabled):focus,
 	button:not(:disabled):hover {
 		background-color: var(--_hover-colour);
 	}

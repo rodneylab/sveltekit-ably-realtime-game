@@ -8,7 +8,8 @@
 	export let player: PlayerDesignation;
 	export let rowIndex: number;
 	export let columnIndex: number;
-	const disabled = !$myTurn || $horizontals[rowIndex][columnIndex] != null;
+
+	let disabled = !$myTurn || $horizontals[rowIndex][columnIndex] != null;
 </script>
 
 <button
@@ -20,7 +21,7 @@
 		? 'var(--colour-primary-tint-50)'
 		: 'var(--colour-secondary-tint-50)'}
 	on:click={() => {
-		myTurn.set(false);
+		// myTurn.set(false);
 		if (channel) {
 			channel.publish('turn', {
 				player,
@@ -46,6 +47,7 @@
 		border-radius: var(--spacing-px-2);
 	}
 
+	button:not(:disabled):focus,
 	button:not(:disabled):hover {
 		background-color: var(--_hover-colour);
 	}
