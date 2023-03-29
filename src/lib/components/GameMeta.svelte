@@ -99,5 +99,7 @@
 		height: var(--spacing-4);
 		margin-right: var(--spacing-2);
 		border: var(--spacing-px) solid var(--colour-dark);
+		border-radius: var(--spacing-px-2);
+		box-shadow: var(--shadow-elevation-medium);
 	}
 </style>

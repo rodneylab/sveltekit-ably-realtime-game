@@ -14,7 +14,7 @@
 	let label = `Mark vertical line row ${rowIndex + 1}, column ${columnIndex + 1}`;
 	if (markedPlayer1) label = 'Marked player 1';
 	if (markedPlayer2) label = 'Marked player 2';
-	let disabled = !channel || !$myTurn || markedPlayer1 || markedPlayer2;
+	let disabled = !$myTurn || markedPlayer1 || markedPlayer2;
 </script>
 
 <button

@@ -1,8 +1,11 @@
 <script lang="ts">
+	import Footer from '$lib/components/Footer.svelte';
 	import GameMeta from '$lib/components/GameMeta.svelte';
 	import Grid from '$lib/components/Grid.svelte';
+	import Header from '$lib/components/Header.svelte';
 	import NameInput from '$lib/components/NameInput.svelte';
 	import Rules from '$lib/components/Rules.svelte';
+	import app from '$lib/configuration';
 	import grid from '$lib/shared/stores/grid';
 	import horizontals from '$lib/shared/stores/horizontalLines';
 	import myTurn from '$lib/shared/stores/myTurn';
@@ -17,8 +20,6 @@
 	import type { PageData } from './$types';
 
 	export let data: PageData;
-
-	import app from '$lib/configuration';
 
 	const { ablyChannelName, rowCount, columnCount } = app;
 
@@ -123,6 +124,7 @@
 	<meta title="description" content={description} />
 </svelte:head>
 
+<Header />
 <main>
 	<h1>Sqvuably</h1>
 	<h2>Squares with Svelte and Ably</h2>
@@ -143,6 +145,7 @@
 	<Grid {channel} {player} />
 	<Rules />
 </main>
+<Footer />
 
 <style lang="postcss">
 	main {

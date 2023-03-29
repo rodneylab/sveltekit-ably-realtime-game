@@ -30,9 +30,7 @@
 	--font-weight-light: 300;
 	--font-weight-normal: 400;
 	--font-weight-medium: 500;
-	/* --font-weight-semibold: 600; */
 	--font-weight-bold: 700;
-	/* $font-weight-extrabold: 800; */
 	--font-weight-black: 900;
 
 	/* Font Size */
@@ -44,15 +42,6 @@
 	--font-size-4: 2.197rem;
 	--font-size-5: 2.747rem;
 	--font-size-6: 3.433rem;
-	/* --font-size-7: 3.815rem; */
-
-	--mobile-font-size-0: 0.889rem;
-	--mobile-font-size-1: 1.125rem;
-	--mobile-font-size-2: 1.406rem;
-	/* --mobile-font-size-3: 1.424rem; */
-	--mobile-font-size-4: 1.424rem;
-	--mobile-font-size-5: 1.602rem;
-	--mobile-font-size-6: 1.802rem;
 
 	/* Line Height */
 	/* --line-height-none: 1; */
@@ -88,6 +77,7 @@
 	--colour-alt-shade-50: hsl(42 7% 35%); /* bison hide */
 	--colour-alt-tint-50-alpha-80: hsl(46 16% 85% / 0.8); /* bison hide */
 
+	/* CREDIT: https://www.joshwcomeau.com/shadow-palette/ */
 	--shadow-color: 45deg 11% 42%;
 	--shadow-elevation-medium: -1px 1px 1.4px hsl(var(--shadow-color) / 0.51),
 		-2.7px 2.7px 3.7px -1.2px hsl(var(--shadow-color) / 0.43),
@@ -129,6 +119,22 @@ body {
 	background-color: var(--colour-alt);
 	max-width: 100%;
 	overflow-x: hidden;
+}
+
+footer {
+	background-color: var(--colour-secondary);
+	color: var(--colour-light);
+	font: var(--font-weight-normal) var(--font-size-2) / var(--line-height-normal) var(--font-body);
+	border-top: var(--spacing-px) solid var(--colour-light);
+}
+
+footer a {
+	color: var(--colour-light);
+	text-underline-offset: var(--spacing-1);
+}
+
+footer :is(a:focus, a:hover) {
+	text-decoration: none;
 }
 
 h1 {
@@ -181,6 +187,7 @@ button:disabled {
 ol {
 	max-width: var(--max-width-text-wrapper);
 }
+
 ol li {
 	padding-left: var(--spacing-0);
 	margin-bottom: var(--spacing-4);
@@ -194,6 +201,10 @@ li *:last-child {
 li > ol {
 	margin-left: var(--spacing-8);
 	margin-top: var(--spacing-4);
+}
+
+nav ul {
+	list-style-type: none;
 }
 
 .screen-reader-text {

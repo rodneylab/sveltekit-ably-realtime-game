@@ -8,7 +8,7 @@
 	export let player: PlayerDesignation;
 	export let rowIndex: number;
 	export let columnIndex: number;
-	const disabled = !channel || !$myTurn || $horizontals[rowIndex][columnIndex] != null;
+	const disabled = !$myTurn || $horizontals[rowIndex][columnIndex] != null;
 </script>
 
 <button
