@@ -1,6 +1,7 @@
 <script lang="ts">
 	import myTurn from '$lib/shared/stores/myTurn';
 	import type { PlayerDesignation } from '$lib/types';
+	import LogoutIcon from '$lib/components/Icons/Logout.svelte';
 
 	export let gameId: string;
 	export let name: string;
@@ -20,6 +21,9 @@
 			class:player-1={player === 'player1'}
 			class:player-2={player === 'player2'}
 		/>{/if}Playing as {name}
+	<form class="logout" action="?/logout" method="POST">
+		<button type="submit"><span class="screen-reader-text">Log out</span> <LogoutIcon /></button>
+	</form>
 </div>
 <p class="network-status">Network Status: {serviceStatus}, GAME-ID: {gameId}</p>
 <div class="score">
@@ -45,9 +49,18 @@
 	.player-name {
 		display: flex;
 		align-items: center;
-		margin-bottom: var(--spacing-2);
+		margin-bottom: var(--spacing-8);
+	}
+	.logout {
+		margin-left: auto;
 	}
 
+	.logout button {
+		display: flex;
+		background-color: var(--colour-secondary);
+		color: var(--colour-light);
+		padding: var(--spacing-2);
+	}
 	.network-status {
 		font-size: var(--font-size-0);
 		margin-bottom: var(--spacing-4);

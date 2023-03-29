@@ -23,6 +23,13 @@ try {
 }
 
 export const actions: Actions = {
+	logout: ({ cookies }) => {
+		const session = cookies.get('session');
+		if (session) {
+			cookies.delete('session');
+		}
+		throw redirect(303, '/');
+	},
 	play: async ({ cookies, request }) => {
 		const form = await request.formData();
 		const name = form.get('name');
