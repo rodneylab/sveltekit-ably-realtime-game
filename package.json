@@ -18,18 +18,19 @@
 	},
 	"devDependencies": {
 		"@commitlint/config-conventional": "^17.4.4",
+		"@csstools/css-parser-algorithms": "^2.1.0",
 		"@iconify/svelte": "^3.1.0",
 		"@js-temporal/polyfill": "^0.4.3",
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/adapter-netlify": "^2.0.6",
-		"@sveltejs/kit": "^1.13.0",
-		"@typescript-eslint/eslint-plugin": "^5.56.0",
-		"@typescript-eslint/parser": "^5.56.0",
+		"@sveltejs/kit": "^1.14.0",
+		"@typescript-eslint/eslint-plugin": "^5.57.0",
+		"@typescript-eslint/parser": "^5.57.0",
 		"ably": "^1.2.37",
 		"autoprefixer": "^10.4.14",
-		"commitlint": "^17.5.0",
+		"commitlint": "^17.5.1",
 		"dompurify": "^3.0.1",
-		"eslint": "^8.36.0",
+		"eslint": "^8.37.0",
 		"eslint-config-prettier": "^8.8.0",
 		"eslint-plugin-svelte3": "^4.0.0",
 		"husky": "^8.0.3",
@@ -38,9 +39,9 @@
 		"postcss-csso": "^6.0.1",
 		"postcss-custom-media": "^9.1.2",
 		"postcss-html": "^1.5.0",
-		"postcss-preset-env": "^8.0.1",
-		"prettier": "^2.8.6",
-		"prettier-plugin-svelte": "^2.9.0",
+		"postcss-preset-env": "^8.2.0",
+		"prettier": "^2.8.7",
+		"prettier-plugin-svelte": "^2.10.0",
 		"stylelint": "^15.3.0",
 		"stylelint-config-recommended": "^11.0.0",
 		"stylelint-config-standard": "^31.0.0",
@@ -58,5 +59,8 @@
 	"bugs": {
 		"url": "https://github.com/rodneylab/sqvuably/issues"
 	},
-	"type": "module"
+	"type": "module",
+	"peerDependencies": {
+		"@csstools/css-parser-algorithms": "^2.1.0"
+	}
 }
