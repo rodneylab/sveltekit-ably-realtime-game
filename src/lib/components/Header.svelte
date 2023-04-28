@@ -36,7 +36,7 @@
 	style:margin-bottom="-{headerShifterHeight}px"
 	class="header"
 >
-	<header class="wrapper">Real-time, online game built with Svelte and Ably.</header>
+	<header class="wrapper">Real-time, online game built with Svelte and Ably.</header>
 </div>
 
 <style>

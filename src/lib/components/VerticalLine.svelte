@@ -9,12 +9,17 @@
 	export let columnIndex: number;
 	export let player: PlayerDesignation;
 
-	let markedPlayer1 = $verticals[rowIndex][columnIndex] === 'player1';
-	let markedPlayer2 = $verticals[rowIndex][columnIndex] === 'player2';
+	$: markedPlayer1 = $verticals[rowIndex][columnIndex] === 'player1';
+	$: markedPlayer2 = $verticals[rowIndex][columnIndex] === 'player2';
 	let label = `Mark vertical line row ${rowIndex + 1}, column ${columnIndex + 1}`;
-	if (markedPlayer1) label = 'Marked player 1';
-	if (markedPlayer2) label = 'Marked player 2';
-	let disabled = !$myTurn || markedPlayer1 || markedPlayer2;
+	$: {
+		if (markedPlayer1) {
+			label = 'Marked player 1';
+		} else if (markedPlayer2) {
+			label = 'Marked player 2';
+		}
+	}
+	$: disabled = !$myTurn || markedPlayer1 || markedPlayer2;
 </script>
 
 <button
@@ -27,7 +32,7 @@
 		: 'var(--colour-secondary-tint-50)'}
 	{disabled}
 	on:click={() => {
-		// myTurn.set(false);
+		myTurn.set(false);
 		if (channel) {
 			channel.publish('turn', {
 				player,

@@ -26,15 +26,12 @@
 	let [player1Score, player2Score] = $score;
 	$: [player1Score, player2Score] = $score;
 	let { gameId, name, player = null, playerIds, token } = data ?? {};
-	// $: ({ name, player = null, playerIds, token } = data ?? {});
 
 	let channel: Types.RealtimeChannelPromise | null = null;
 	$: serviceStatus = channel ? 'Connected to Ably' : 'Offline';
 
 	let playerNumber = (player && player === 'player1' ? 1 : 2) ?? 0;
 	let otherPlayerNumber = (player && player === 'player1' ? 2 : 1) ?? 0;
-
-	let myId = (playerIds && playerIds[playerNumber - 1]) ?? null;
 
 	let turnsRemaining = 2 * columnCount * rowCount + rowCount + columnCount;
 	let playworthyCells = columnCount * rowCount;
@@ -147,8 +144,6 @@
 		/>
 	{/if}
 	<Grid {channel} {player} />
-	<pre>{debugData}</pre>
-
 	<Rules />
 </main>
 <Footer />
