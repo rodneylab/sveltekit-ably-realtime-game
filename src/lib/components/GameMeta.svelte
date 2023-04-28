@@ -38,11 +38,11 @@
 {#if playworthyCells !== 0}
 	<p class="turn">{$myTurn ? 'Your turn!' : `Player ${otherPlayerNumber}’s turn…`}</p>
 {:else if player1Score > player2Score}
-	Player 1 wins
+	<p class="turn">Player 1 wins</p>
 {:else if player2Score > player1Score}
-	Player 2 wins
+	<p class="turn">Player 2 wins</p>
 {:else}
-	Draw
+	<p class="turn">Draw</p>
 {/if}
 
 <style lang="postcss">

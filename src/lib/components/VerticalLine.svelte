@@ -30,6 +30,7 @@
 	style:--hover-colour={player === 'player1'
 		? 'var(--colour-primary-tint-50)'
 		: 'var(--colour-secondary-tint-50)'}
+	style:outline-color={player === 'player1' ? 'var(--colour-primary)' : 'var(--colour-secondary)'}
 	{disabled}
 	on:click={() => {
 		myTurn.set(false);
