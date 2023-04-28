@@ -26,7 +26,7 @@
 	role="img"
 	icon="simple-icons:twitter"
 	aria-label={label}
-	{ariaHidden}
+	aria-hidden={ariaHidden ? 'true' : 'false'}
 	{width}
 	{height}
 />

@@ -28,7 +28,7 @@
 	role="img"
 	icon="teenyicons:logout-outline"
 	aria-label={label}
-	{ariaHidden}
+	aria-hidden={ariaHidden ? 'true' : 'false'}
 	{width}
 	{height}
 />
