@@ -25,7 +25,7 @@
 
 	let [player1Score, player2Score] = $score;
 	$: [player1Score, player2Score] = $score;
-	let { gameId, name, player = null, playerIds, token } = data ?? {};
+	let { gameId, name, player = null, token } = data ?? {};
 
 	let channel: Types.RealtimeChannelPromise | null = null;
 	$: serviceStatus = channel ? 'Connected to Ably' : 'Offline';
@@ -33,13 +33,10 @@
 	let playerNumber = (player && player === 'player1' ? 1 : 2) ?? 0;
 	let otherPlayerNumber = (player && player === 'player1' ? 2 : 1) ?? 0;
 
-	let turnsRemaining = 2 * columnCount * rowCount + rowCount + columnCount;
 	let playworthyCells = columnCount * rowCount;
 
 	let otherPlayer: PlayerDesignation =
 		(player && playerNumber === 1 ? 'player2' : 'player1') ?? null;
-
-	let debugData = '';
 
 	onMount(async () => {
 		// serviceStatus = 'Offline';
@@ -57,6 +54,7 @@
 		channel = ably.channels.get(ablyChannelName);
 
 		channel?.subscribe(({ name: messageName, data: messageData }) => {
+			console.log({ messageName, messageData });
 			if (messageName === 'turn') {
 				const { player: messagePlayer, vertical, row, column } = messageData;
 
@@ -95,13 +93,11 @@
 				const playerUpdatedScore = $score[messagePlayerNumber - 1];
 
 				// if the player scored they get another turn
-				debugData = `${debugData}\n${JSON.stringify(messageData, null, 2)}`;
 				if (playerUpdatedScore > playerInitialScore) {
 					myTurn.set(messagePlayer === player);
 				} else {
 					myTurn.set(messagePlayer === otherPlayer);
 				}
-				turnsRemaining -= 1;
 				playworthyCells = $grid.reduce(
 					(runningCount, currentRow) =>
 						currentRow.reduce(
