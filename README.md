@@ -1,4 +1,4 @@
-<img src="./images/rodneylab-github-sveltekit-ably-realtime-game.png" alt="Rodney Lab sveltekit-ably-realtime-game Github banner">
+<img src="https://github.com/rodneylab/sveltekit-ably-realtime-game/raw/main/images/rodneylab-github-sveltekit-ably-realtime-game.png" alt="Rodney Lab sveltekit-ably-realtime-game Github banner">
 
 <p align="center">
   <a aria-label="Open Rodney Lab site" href="https://rodneylab.com" rel="nofollow noopener noreferrer">
