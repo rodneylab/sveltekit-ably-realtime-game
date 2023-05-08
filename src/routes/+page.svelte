@@ -125,7 +125,7 @@
 	/>
 	<link rel="canonical" href="https://sqvuably.rodneylab.com" />
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:image" content="/sqvuably-twitter.png" />
+	<meta name="twitter:image" content="https://sqvuably.rodneylab.com/sqvuably-twitter.png" />
 	<meta name="twitter:creator" content="@askRodney" />
 	<meta name="twitter:site" content="@askRodney" />
 	<meta name="twitter:label1" content="Written by" />
@@ -139,7 +139,7 @@
 		property="og:description"
 		content="SvelteKit Ably: introduction to using Svelte with Ably and building a real-time ♟️ game or instant 💬 chat with serverless WebSockets."
 	/>
-	<meta property="og:image" content="/sqvuably-og.png" />
+	<meta property="og:image" content="https://sqvuably.rodneylab.com/sqvuably-og.png" />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="627" />
 	<meta property="og:image:alt" content="Sqvuably: Rodney Lab Demo" />
