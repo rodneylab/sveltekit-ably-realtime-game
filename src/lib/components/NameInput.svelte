@@ -3,7 +3,7 @@
 </script>
 
 <form action="?/play" method="POST">
-	<p>Enter your name then hit play to start:</p>
+	<p>Enter your name, then hit play to start:</p>
 	<div class="name-input-wrapper">
 		<label for="name" class="screen-reader-text">Name</label>
 		<input id="name" type="text" name="name" placeholder="Your player name" />
