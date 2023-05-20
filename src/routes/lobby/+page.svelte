@@ -137,7 +137,7 @@
 			sender: myClientId,
 			target: otherPlayerClientId,
 			gameId,
-			name: otherPlayerName
+			name
 		});
 	}
 
