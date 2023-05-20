@@ -19,6 +19,7 @@
 	--spacing-20: 5rem;
 	--spacing-24: 6rem;
 	--spacing-outer: max(var(--spacing-6), 5vw);
+	--max-width-container-text: 38rem;
 	--max-width-container-lg: 64rem;
 	--max-width-wrapper: var(--max-width-container-lg);
 	--max-width-full: 100%;
@@ -142,7 +143,18 @@ h1 {
 }
 
 h2 {
-	font: var(--font-size-3) / var(--line-height-normal) var(--font-heading);
+	font: var(--font-weight-medium) var(--font-size-3) / var(--line-height-normal) var(--font-heading);
+}
+
+h1,
+h2 {
+	margin-block: var(--spacing-12) var(--spacing-6);
+}
+
+p {
+	max-width: var(--max-width-container-text);
+	line-height: var(--line-height-relaxed);
+	margin-block: var(--spacing-0) var(--spacing-4);
 }
 
 summary {
