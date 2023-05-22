@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { applyAction, deserialize } from '$app/forms';
 	import { invalidateAll } from '$app/navigation';
+	import CloseIcon from '$lib/components/Icons/Close.svelte';
 	import LogoutIcon from '$lib/components/Icons/Logout.svelte';
 	import PlayIcon from '$lib/components/Icons/Play.svelte';
 	import app from '$lib/configuration';
@@ -65,6 +66,7 @@
 							name: player1Name
 						};
 					} else if (type === 'accept-invitation') {
+						// other player has accpeted this players previously extended invitation
 						const { sender, target, gameId } = data;
 						const body = new FormData();
 						body.append('player1', target);
@@ -83,6 +85,11 @@
 						}
 						await channel?.presence.leave({ name });
 						applyAction(result);
+					} else if (type === 'rescind-invitation') {
+						const { gameId } = data;
+						if (incomingInvitation?.gameId === gameId) {
+							incomingInvitation = null;
+						}
 					}
 				}
 				return;
@@ -141,6 +148,20 @@
 		});
 	}
 
+	async function handleRescindInvitation() {
+		if (openInvitation) {
+			const { gameId, name, player2 } = openInvitation;
+			await channel?.presence.update({
+				type: 'rescind-invitation',
+				sender: myClientId,
+				target: player2,
+				gameId,
+				name
+			});
+			openInvitation = null;
+		}
+	}
+
 	async function handleInvitationAcceptance(this: HTMLFormElement) {
 		if (incomingInvitation) {
 			const { player1: target, player2: sender, gameId } = incomingInvitation;
@@ -167,6 +188,18 @@
 		}
 	}
 
+	$: handleKeyDown;
+	function handleKeyDown(event: KeyboardEvent) {
+		const { key } = event;
+		if (key === 'Escape') {
+			if (openInvitation != null) {
+				handleRescindInvitation();
+			} else if (incomingInvitation != null) {
+				incomingInvitation = null;
+			}
+		}
+	}
+
 	function timestampToDurationString(timestamp: number): string {
 		const now = Temporal.Now.instant();
 		const timestampInstant = Temporal.Instant.fromEpochMilliseconds(timestamp);
@@ -174,6 +207,8 @@
 		return `${seconds}s ago`;
 	}
 </script>
+
+<svelte:window on:keydown={handleKeyDown} />
 
 <div class="wrapper">
 	<h1>Sqvuably Lobby</h1>
@@ -217,6 +252,18 @@
 				}}
 				class="modal-content incoming-invite"
 			>
+				<div class="close-button-wrapper">
+					<button
+						on:click={() => {
+							incomingInvitation = null;
+						}}
+						type="button"
+						class="close-button"
+					>
+						<span class="screen-reader-text">Cancel invitation</span>
+						<CloseIcon width={24} /></button
+					>
+				</div>
 				<p>{incomingInvitation.name} invited you to join a game!</p>
 				<form action="?/play" method="POST" on:submit|preventDefault={handleInvitationAcceptance}>
 					<div>
@@ -236,13 +283,13 @@
 	{#if openInvitation}
 		{@const { name } = openInvitation}
 		<section class="modal-wrapper">
-			<div
-				use:clickOutside
-				on:outclick={() => {
-					openInvitation = null;
-				}}
-				class="modal-content"
-			>
+			<div use:clickOutside on:outclick={handleRescindInvitation} class="modal-content">
+				<div class="close-button-wrapper">
+					<button on:click={handleRescindInvitation} type="button" class="close-button">
+						<span class="screen-reader-text">Cancel invitation</span>
+						<CloseIcon width={24} /></button
+					>
+				</div>
 				You invited {name} to play. Waiting for their response&hellip;
 			</div>
 		</section>
@@ -335,12 +382,29 @@
 		height: 100%;
 		background-color: hsl(0 0% 0% / 50%);
 	}
+
 	.modal-content {
 		background-color: var(--colour-alt);
+		width: min(48rem, 100%);
 		height: fit-content;
 		margin: auto;
 		padding: var(--spacing-12);
-		border-radius: var(--spacing-1);
 		font-size: var(--font-size-3);
+
+		& .close-button-wrapper {
+			display: flex;
+		}
+
+		& .close-button {
+			background-color: transparent;
+			padding: var(--spacing-3);
+			margin: calc(-1 * var(--spacing-3)) calc(-1 * var(--spacing-3)) var(--spacing-0) auto;
+		}
+	}
+
+	@media (width > 768px) {
+		.modal-content {
+			border-radius: var(--spacing-1);
+		}
 	}
 </style>
