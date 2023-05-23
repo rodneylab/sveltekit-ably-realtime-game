@@ -74,12 +74,16 @@
 
 	--colour-secondary: hsl(200 59% 39%); /* jelly bean */
 	--colour-secondary-tint-50: hsl(200 39% 70%);
+	--colour-secondary-shade-60: hsl(199 58% 20%);
 	--colour-alt: hsl(44 17% 69%); /* bison hide */
-	--colour-alt-shade-50: hsl(42 7% 35%); /* bison hide */
-	--colour-alt-tint-50-alpha-80: hsl(46 16% 85% / 0.8); /* bison hide */
+	--colour-alt-shade-50: hsl(42 7% 35%);
+	--colour-alt-tint-50-alpha-80: hsl(46 16% 85% / 0.8);
 
 	/* CREDIT: https://www.joshwcomeau.com/shadow-palette/ */
 	--shadow-color: 45deg 11% 42%;
+	--shadow-elevation-low: -1px 1px 1.4px hsl(var(--shadow-color) / 0.48),
+		-1.5px 1.5px 2.1px -1.7px hsl(var(--shadow-color) / 0.39),
+		-4px 4px 5.5px -3.5px hsl(var(--shadow-color) / 0.3);
 	--shadow-elevation-medium: -1px 1px 1.4px hsl(var(--shadow-color) / 0.51),
 		-2.7px 2.7px 3.7px -1.2px hsl(var(--shadow-color) / 0.43),
 		-7.6px 7.6px 10.5px -2.3px hsl(var(--shadow-color) / 0.36),
@@ -131,7 +135,6 @@ footer {
 
 footer a {
 	color: var(--colour-light);
-	text-underline-offset: var(--spacing-1);
 }
 
 footer :is(a:focus, a:hover) {
@@ -155,6 +158,11 @@ p {
 	max-width: var(--max-width-container-text);
 	line-height: var(--line-height-relaxed);
 	margin-block: var(--spacing-0) var(--spacing-4);
+}
+
+a {
+	text-underline-offset: var(--spacing-1);
+	color: var(--colour-secondary-shade-60);
 }
 
 summary {

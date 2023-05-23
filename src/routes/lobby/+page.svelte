@@ -327,6 +327,8 @@
 			justify-content: center;
 			background-color: var(--colour-secondary);
 			color: var(--colour-light);
+			box-shadow: var(--shadow-elevation-low);
+			border-radius: var(--spacing-1);
 		}
 	}
 
@@ -335,6 +337,7 @@
 		background-color: var(--colour-secondary);
 		color: var(--colour-light);
 		padding: var(--spacing-2);
+		box-shadow: var(--shadow-elevation-low);
 	}
 
 	@media (width > 768px) {

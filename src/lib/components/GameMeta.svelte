@@ -60,6 +60,7 @@
 		background-color: var(--colour-secondary);
 		color: var(--colour-light);
 		padding: var(--spacing-2);
+		box-shadow: var(--shadow-elevation-low);
 	}
 	.network-status {
 		font-size: var(--font-size-0);
