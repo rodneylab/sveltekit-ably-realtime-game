@@ -52,8 +52,9 @@
 		await channel?.presence.enter({ name });
 
 		await channel.presence.subscribe(async (presenceUpdate) => {
+			console.log({ presenceUpdate });
 			const { action, data } = presenceUpdate;
-
+			console.log({ action });
 			if (action === 'update') {
 				const { target, type } = data;
 				if (target === myClientId) {
@@ -238,7 +239,7 @@
 				>
 			</li>
 		{:else}
-			There aren&rsquo;t any other players waiting right now.
+			There aren&rsquo;t any other players waiting right now.
 		{/each}
 	</ul>
 
