@@ -63,3 +63,35 @@
 		/* Chrome 36+, Opera 23+, Firefox 39+ */ url('/fonts/space-mono-v12-latin-700.woff')
 			format('woff'); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
+
+@font-face {
+	font-family: 'Space Mono Fallback: Courier New';
+	src: local('Courier New');
+	ascent-override: 109.8218%;
+	descent-override: 35.3979%;
+	size-adjust: 101.9834%;
+}
+
+@font-face {
+	font-family: 'Space Mono Fallback: Roboto';
+	src: local('Roboto');
+	ascent-override: 80.8696%;
+	descent-override: 26.066%;
+	size-adjust: 138.4946%;
+}
+
+@font-face {
+	font-family: 'Space Grotesk Fallback: Arial';
+	src: local('Arial');
+	ascent-override: 88.8229%;
+	descent-override: 26.358%;
+	size-adjust: 110.7823%;
+}
+
+@font-face {
+	font-family: 'Space Grotesk Fallback: Roboto';
+	src: local('Roboto');
+	ascent-override: 88.9211%;
+	descent-override: 26.3872%;
+	size-adjust: 110.6599%;
+}

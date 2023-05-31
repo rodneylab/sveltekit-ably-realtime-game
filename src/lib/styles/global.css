@@ -24,8 +24,10 @@
 	--max-width-wrapper: var(--max-width-container-lg);
 	--max-width-full: 100%;
 
-	--font-body: 'Space Mono';
-	--font-heading: 'Space Grotesk';
+	--font-body: 'Space Mono', 'Space Mono Fallback: Courier New', 'Space Mono Fallback: Roboto',
+		monospace;
+	--font-heading: 'Space Grotesk', 'Space Grotesk Fallback: Arial', 'Space Grotesk Fallback: Roboto',
+		sans-serif;
 
 	/* Font Weight*/
 	--font-weight-light: 300;

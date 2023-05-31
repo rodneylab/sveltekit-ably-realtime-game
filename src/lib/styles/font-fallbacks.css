@@ -1,0 +1,37 @@
+/* This file is generated using capsize. Run `vite-node capsize-font-fallbacks.ts` to refresh. */
+
+:root {
+	--font-body: 'Space Mono', 'Space Mono Fallback: Courier New', 'Space Mono Fallback: Roboto',
+		monospace;
+	--font-heading: 'Space Grotesk', 'Space Grotesk Fallback: Arial', 'Space Grotesk Fallback: Roboto',
+		sans-serif;
+}
+
+@font-face {
+	font-family: 'Space Mono Fallback: Courier New';
+	src: local('Courier New');
+	ascent-override: 109.8218%;
+	descent-override: 35.3979%;
+	size-adjust: 101.9834%;
+}
+@font-face {
+	font-family: 'Space Mono Fallback: Roboto';
+	src: local('Roboto');
+	ascent-override: 80.8696%;
+	descent-override: 26.066%;
+	size-adjust: 138.4946%;
+}
+@font-face {
+	font-family: 'Space Grotesk Fallback: Arial';
+	src: local('Arial');
+	ascent-override: 88.8229%;
+	descent-override: 26.358%;
+	size-adjust: 110.7823%;
+}
+@font-face {
+	font-family: 'Space Grotesk Fallback: Roboto';
+	src: local('Roboto');
+	ascent-override: 88.9211%;
+	descent-override: 26.3872%;
+	size-adjust: 110.6599%;
+}
