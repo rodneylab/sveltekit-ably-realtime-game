@@ -341,26 +341,10 @@
 		box-shadow: var(--shadow-elevation-low);
 	}
 
-	@media (width > 768px) {
-		li {
-			display: grid;
-			grid-template-columns: auto auto 33%;
-			grid-template-areas: 'player . invite-button';
-			align-items: center;
-			margin-bottom: var(--spacing-8);
-		}
-	}
-
 	.player {
 		grid-area: player;
 		font-style: italic;
 		margin-bottom: var(--spacing-4);
-	}
-
-	@media (width > 768px) {
-		.player {
-			margin-bottom: unset;
-		}
 	}
 
 	.player-name {
@@ -406,7 +390,19 @@
 		}
 	}
 
-	@media (width > 768px) {
+	@media (--desktop-device) {
+		li {
+			display: grid;
+			grid-template-columns: auto auto 33%;
+			grid-template-areas: 'player . invite-button';
+			align-items: center;
+			margin-bottom: var(--spacing-8);
+		}
+
+		.player {
+			margin-bottom: unset;
+		}
+
 		.modal-content {
 			border-radius: var(--spacing-1);
 		}

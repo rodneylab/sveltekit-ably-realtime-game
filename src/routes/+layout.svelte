@@ -54,7 +54,7 @@
 		min-height: 100vh;
 	}
 
-	@media screen and (width > 768px) {
+	@media (--desktop-device) {
 		main {
 			width: min(var(--max-width-full) - var(--spacing-24), var(--max-width-wrapper));
 			margin: var(--spacing-6) auto var(--spacing-24);

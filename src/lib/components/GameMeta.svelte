@@ -83,7 +83,7 @@
 		padding-top: var(--spacing-4);
 	}
 
-	@media (width > 768px) {
+	@media (--desktop-device) {
 		.score {
 			display: grid;
 			grid-template-areas: 'score-1-label score-numbers score-2-label';

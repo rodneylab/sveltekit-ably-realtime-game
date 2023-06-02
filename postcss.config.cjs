@@ -1,11 +1,13 @@
 const autoprefixer = require('autoprefixer');
 const postcssPresetEnv = require('postcss-preset-env');
 const csso = require('postcss-csso');
-const customMediaPlugin = require('postcss-custom-media');
+const postcssGlobalData = require('@csstools/postcss-global-data');
 
 const config = {
 	plugins: [
-		customMediaPlugin(),
+		postcssGlobalData({
+			files: ['src/lib/styles/custom-media-queries.css']
+		}),
 		postcssPresetEnv({
 			stage: 3,
 			features: {

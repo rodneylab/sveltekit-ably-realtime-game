@@ -73,8 +73,13 @@
 		}
 	}
 
-	li:hover,
 	li:focus {
 		transform: scale(1.2);
+	}
+
+	@media (any-hover: hover) {
+		li:hover {
+			transform: scale(1.2);
+		}
 	}
 </style>

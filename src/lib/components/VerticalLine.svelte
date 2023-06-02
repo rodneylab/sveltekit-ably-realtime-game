@@ -56,9 +56,14 @@
 		border-radius: var(--spacing-px-2);
 	}
 
-	button:not(:disabled):focus,
-	button:not(:disabled):hover {
+	button:not(:disabled):focus {
 		background-color: var(--_hover-colour);
+	}
+
+	@media (any-hover: hover) {
+		button:not(:disabled):hover {
+			background-color: var(--_hover-colour);
+		}
 	}
 
 	.player-1 {

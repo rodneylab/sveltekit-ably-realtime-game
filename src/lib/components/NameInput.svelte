@@ -64,9 +64,14 @@
 		z-index: -1;
 	}
 
-	.name-input-wrapper button:focus::before,
-	.name-input-wrapper button:hover::before {
+	.name-input-wrapper button:focus::before {
 		opacity: 1;
+	}
+
+	@media (any-hover: hover) {
+		.name-input-wrapper button:hover::before {
+			opacity: 1;
+		}
 	}
 
 	@media (prefers-reduced-motion: no-preference) {
@@ -78,7 +83,7 @@
 		display: none;
 	}
 
-	@media (width > 768px) {
+	@media (--desktop-device) {
 		.name-input-wrapper .button-text {
 			display: inline;
 		}

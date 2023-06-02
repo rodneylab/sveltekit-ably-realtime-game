@@ -139,8 +139,14 @@ footer a {
 	color: var(--colour-light);
 }
 
-footer :is(a:focus, a:hover) {
+footer a:focus {
 	text-decoration: none;
+}
+
+@media (any-hover: hover) {
+	footer a:hover {
+		text-decoration: none;
+	}
 }
 
 h1 {
@@ -192,7 +198,7 @@ button {
 	border-radius: var(--spacing-2);
 }
 
-@media (width > 768px) {
+@media (--desktop-device) {
 	button {
 		padding-inline: var(--spacing-4);
 	}
