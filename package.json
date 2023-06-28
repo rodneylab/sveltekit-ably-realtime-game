@@ -37,7 +37,6 @@
 		"dompurify": "^3.0.3",
 		"eslint": "^8.43.0",
 		"eslint-config-prettier": "^8.8.0",
-		"eslint-plugin-svelte3": "^4.0.0",
 		"husky": "^8.0.3",
 		"netlify-cli": "^15.7.0",
 		"postcss": "^8.4.24",
@@ -70,5 +69,9 @@
 		"@csstools/css-parser-algorithms": "^2.1.0",
 		"@csstools/css-tokenizer": "^2.1.0",
 		"@types/node": "^18.15.11"
+	},
+	"dependencies": {
+		"@upstash/redis": "^1.21.0",
+		"eslint-plugin-svelte": "^2.31.1"
 	}
 }

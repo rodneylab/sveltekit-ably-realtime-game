@@ -11,14 +11,15 @@
 	import { Temporal } from '@js-temporal/polyfill';
 	import type { Types } from 'ably';
 	import { Realtime } from 'ably';
-	import { onMount } from 'svelte';
+	import { onMount, afterUpdate } from 'svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
 
 	const { ablyChannelName } = app;
 
-	let { myClientId, name, token } = data ?? {};
+	let { myClientId, name, somethingWentWrong, token } = data ?? {};
+	$: ({ myClientId, name, somethingWentWrong, token } = data ?? {});
 
 	let channel: Types.RealtimeChannelPromise | null = null;
 
@@ -52,9 +53,7 @@
 		await channel?.presence.enter({ name });
 
 		await channel.presence.subscribe(async (presenceUpdate) => {
-			console.log({ presenceUpdate });
 			const { action, data } = presenceUpdate;
-			console.log({ action });
 			if (action === 'update') {
 				const { target, type } = data;
 				if (target === myClientId) {
@@ -84,6 +83,7 @@
 						if (type === 'success') {
 							await invalidateAll();
 						}
+						openInvitation = null;
 						await channel?.presence.leave({ name });
 						applyAction(result);
 					} else if (type === 'rescind-invitation') {
@@ -123,6 +123,13 @@
 					.filter(({ clientId }) => clientId !== myClientId);
 			}
 		});
+	});
+
+	afterUpdate(async () => {
+		// reconnect players to presence if something went wrong setting up their game
+		if (somethingWentWrong) {
+			await channel?.presence.enter({ name });
+		}
 	});
 
 	async function handleInvitation({
@@ -184,6 +191,7 @@
 			if (type === 'success') {
 				await invalidateAll();
 			}
+			incomingInvitation = null;
 			await channel?.presence.leave({ name });
 			applyAction(result);
 		}
@@ -214,13 +222,16 @@
 <div class="wrapper">
 	<h1>Sqvuably Lobby</h1>
 	<div>
-		<p>
-			Welcome to the Sqvuably lobby {name} 👋🏽. To start playing, invite a player listed below or wait
-			for one of them to invite you. If you want to play a friend, ask them to go to
-			<a href="https://sqvuably.rodneylab.com/">sqvuably.rodneylab.com</a>, enter a player name and
-			hit the <strong>Start</strong> button.
-		</p>
-
+		{#if somethingWentWrong}
+			<p><strong> Something went wrong. Try setting up your game again.</strong></p>
+		{:else}
+			<p>
+				Welcome to the Sqvuably lobby {name} 👋🏽. To start playing, invite a player listed below or wait
+				for one of them to invite you. If you want to play a friend, ask them to go to
+				<a href="https://sqvuably.rodneylab.com/">sqvuably.rodneylab.com</a>, enter a player name
+				and hit the <strong>Start</strong> button.
+			</p>
+		{/if}
 		<form class="logout" action="?/logout" method="POST">
 			<button type="submit"><span class="screen-reader-text">Log out</span> <LogoutIcon /></button>
 		</form>

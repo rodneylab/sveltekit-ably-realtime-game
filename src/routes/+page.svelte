@@ -51,6 +51,9 @@
 
 		channel = ably.channels.get(ablyChannelName);
 
+		// // leave the lobby since we are about to start playing
+		// await channel?.presence.leave({ name });
+
 		channel?.subscribe(({ name: messageName, data: messageData }) => {
 			if (messageName === 'turn') {
 				const { player: messagePlayer, vertical, row, column } = messageData;

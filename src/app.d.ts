@@ -1,13 +1,17 @@
+import type { Redis } from '@upstash/redis';
+
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
 declare global {
-	namespace svelte.JSX {
+	namespace svelteHTML {
 		interface HTMLAttributes<T> {
-			onoutclick?: (e: CustomEvent) => void;
+			'on:outclick'?: (e: CustomEvent) => void;
 		}
 	}
 	namespace App {
-		// interface Locals {}
+		interface Locals {
+			redis: Redis;
+		}
 		// interface PageData {}
 		// interface Platform {}
 	}

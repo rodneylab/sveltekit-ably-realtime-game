@@ -1,14 +1,16 @@
-import type { PlayerDesignation } from '$lib/types';
+import type { Game, PlayerDesignation } from '$lib/types';
 import { Temporal } from '@js-temporal/polyfill';
 import { fail, redirect } from '@sveltejs/kit';
 import type { Types } from 'ably';
 import type { Actions, PageServerLoad } from './$types';
 
+const REDIS_HASHSET_KEY = 'games';
+
 export const actions: Actions = {
 	logout: ({ cookies }) => {
 		const session = cookies.get('session');
 		if (session) {
-			cookies.delete('session');
+			cookies.delete('session', { path: '/' });
 		}
 		throw redirect(303, '/');
 	},
@@ -35,26 +37,24 @@ export const actions: Actions = {
 	}
 };
 
-export const load: PageServerLoad = async function load({ cookies, url }) {
+export const load: PageServerLoad = async function load({ cookies, locals }) {
 	const session = cookies.get('session');
 	if (session) {
-		const {
-			clientId,
-			gameId,
-			name,
-			player1,
-			player2,
-			token: stringifiedToken
-		} = JSON.parse(session);
-
-		let player: PlayerDesignation = null;
-		if (player1 === clientId) {
-			player = 'player1';
-		} else if (player2 === clientId) {
-			player = 'player2';
-		}
-
+		const { clientId, gameId, name, token: stringifiedToken } = JSON.parse(session);
 		const token = JSON.parse(stringifiedToken) as Types.TokenDetails;
-		return { gameId, name, player, token, playerIds: [player1, player2] };
+
+		const game = (await locals.redis.hget(REDIS_HASHSET_KEY, gameId)) as Game | null;
+		if (game) {
+			const { player1, player2 } = game;
+			let player: PlayerDesignation = null;
+			if (player1 === clientId) {
+				player = 'player1';
+				return { gameId, name, player, token, playerIds: [player1, player2] };
+			} else if (player2 === clientId) {
+				player = 'player2';
+				return { gameId, name, player, token, playerIds: [player1, player2] };
+			}
+		}
+		throw redirect(303, '/lobby?error=true');
 	}
 };
