@@ -50,7 +50,8 @@ export const load: PageServerLoad = async function load({ cookies, locals }) {
 			if (player1 === clientId) {
 				player = 'player1';
 				return { gameId, name, player, token, playerIds: [player1, player2] };
-			} else if (player2 === clientId) {
+			}
+			if (player2 === clientId) {
 				player = 'player2';
 				return { gameId, name, player, token, playerIds: [player1, player2] };
 			}
