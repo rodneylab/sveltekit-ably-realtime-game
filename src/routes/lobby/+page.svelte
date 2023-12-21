@@ -10,9 +10,11 @@
 	import '$lib/styles/global.css';
 	import { Temporal } from '@js-temporal/polyfill';
 	import type { Types } from 'ably';
-	import { Realtime } from 'ably';
+	import ably from 'ably';
 	import { onMount, afterUpdate } from 'svelte';
 	import type { PageData } from './$types';
+
+	const { Realtime } = ably;
 
 	export let data: PageData;
 

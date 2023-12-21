@@ -20,7 +20,7 @@ export const actions: Actions = {
 		if (session) {
 			cookies.delete('session', { path: '/' });
 		}
-		throw redirect(303, '/');
+		redirect(303, '/');
 	},
 	play: async ({ cookies, locals, request }) => {
 		const form = await request.formData();
@@ -59,7 +59,7 @@ export const actions: Actions = {
 						httpOnly: true
 					}
 				);
-				throw redirect(303, '/');
+				 redirect(303, '/');
 			}
 		}
 		return fail(400, {});
@@ -69,7 +69,7 @@ export const actions: Actions = {
 export const load: PageServerLoad = async function load({ cookies, url }) {
 	if (!ably) {
 		console.error('No ably!');
-		throw svelteKitError(502, 'Bad Gateway');
+		svelteKitError(502, 'Bad Gateway');
 	}
 	const session = cookies.get('session');
 	if (session) {
@@ -80,5 +80,5 @@ export const load: PageServerLoad = async function load({ cookies, url }) {
 
 		return { myClientId: clientId, name, token, somethingWentWrong };
 	}
-	throw redirect(303, '/');
+	redirect(303, '/');
 };

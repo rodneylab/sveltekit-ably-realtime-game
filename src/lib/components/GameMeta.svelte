@@ -3,7 +3,6 @@
 	import type { PlayerDesignation } from '$lib/types';
 	import LogoutIcon from '$lib/components/Icons/Logout.svelte';
 
-	export let gameId: string;
 	export let name: string;
 	export let player: PlayerDesignation;
 	export let serviceStatus: string;
@@ -25,7 +24,7 @@
 		<button type="submit"><span class="screen-reader-text">Log out</span> <LogoutIcon /></button>
 	</form>
 </div>
-<p class="network-status">Network Status: {serviceStatus}, GAME-ID: {gameId}</p>
+<p class="network-status">Network Status: {serviceStatus}</p>
 <div class="score">
 	<span class="score-1-label">
 		{playerNumber === 1 ? name : 'Player One'}

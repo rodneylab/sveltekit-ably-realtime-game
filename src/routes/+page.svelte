@@ -13,9 +13,11 @@
 	import '$lib/styles/global.css';
 	import type { PlayerDesignation } from '$lib/types';
 	import type { Types } from 'ably';
-	import { Realtime } from 'ably';
+	import ably from 'ably';
 	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
+
+	const { Realtime } = ably;
 
 	export let data: PageData;
 
@@ -118,7 +120,6 @@
 	<NameInput />
 {:else}
 	<GameMeta
-		{gameId}
 		{name}
 		{player}
 		{serviceStatus}

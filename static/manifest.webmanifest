@@ -1,6 +1,6 @@
 {
-	"name": "Svelte CSS Image Slider",
-	"short_name": "Image Slider",
+	"name": "Sqvuably: SvelteKit Ably Real-time Squares Game",
+	"short_name": "Sqvuably",
 	"start_url": "/index.html",
 	"background_color": "#141B29",
 	"theme_color": "#787777",
