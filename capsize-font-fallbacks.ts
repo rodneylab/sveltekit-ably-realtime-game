@@ -13,12 +13,12 @@ const outputPath = path.join(__dirname, 'src/lib/styles/font-fallbacks.css');
 const { fontFaces: fontFacesBody, fontFamily: fontFamilyBody } = createFontStack([
 	spaceMono,
 	courierNew,
-	roboto
+	roboto,
 ]);
 const { fontFaces: fontFacesHeading, fontFamily: fontFamilyHeading } = createFontStack([
 	spaceGrotesk,
 	arial,
-	roboto
+	roboto,
 ]);
 
 const css = `/* This file is generated using capsize. Run \`vite-node capsize-font-fallbacks.ts\` to refresh. */

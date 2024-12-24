@@ -15,7 +15,7 @@
 		headerShifterHeight =
 			Math.min(
 				header.offsetTop,
-				document.documentElement.scrollHeight - window.innerHeight - headerHeight
+				document.documentElement.scrollHeight - window.innerHeight - headerHeight,
 			) - 1;
 	}
 
@@ -29,7 +29,7 @@
 
 <svelte:window on:scroll={fixHeaderOffset} on:resize={fixHeaderOffset} />
 
-<div style:height="{headerShifterHeight}px" class="header-shifter" />
+<div style:height="{headerShifterHeight}px" class="header-shifter"></div>
 <div
 	bind:this={header}
 	bind:clientHeight={headerHeight}

@@ -4,21 +4,31 @@
 	import type { PlayerDesignation } from '$lib/types';
 	import type { Types } from 'ably';
 
-	export let channel: Types.RealtimeChannelPromise | null;
-	export let player: PlayerDesignation;
-	export let rowIndex: number;
-	export let columnIndex: number;
-	$: markedPlayer1 = $horizontals[rowIndex][columnIndex] === 'player1';
-	$: markedPlayer2 = $horizontals[rowIndex][columnIndex] === 'player2';
-	$: disabled = !$myTurn || $horizontals[rowIndex][columnIndex] != null;
-	let label = `Mark horizontal line row ${rowIndex + 1}, column ${columnIndex + 1}`;
-	$: {
-		if (markedPlayer1) {
-			label = 'Marked player 1';
-		} else if (markedPlayer2) {
-			label = 'Marked player 2';
-		}
-	}
+	let {
+		channel,
+		player,
+		rowIndex,
+		columnIndex,
+	}: {
+		channel: Types.RealtimeChannelPromise | null;
+		player: PlayerDesignation;
+		rowIndex: number;
+		columnIndex: number;
+	} = $props();
+
+	let markedPlayer1 = $derived($horizontals[rowIndex][columnIndex] === 'player1');
+	let markedPlayer2 = $derived($horizontals[rowIndex][columnIndex] === 'player2');
+	let disabled = $derived(!$myTurn || $horizontals[rowIndex][columnIndex] != null);
+	let label = $derived(
+		(() => {
+			if (markedPlayer1) {
+				return 'Marked player 1';
+			} else if (markedPlayer2) {
+				return 'Marked player 2';
+			}
+			return `Mark horizontal line row ${rowIndex + 1}, column ${columnIndex + 1}`;
+		})(),
+	);
 </script>
 
 <button
@@ -31,13 +41,13 @@
 		? 'var(--colour-primary-tint-50)'
 		: 'var(--colour-secondary-tint-50)'}
 	style:outline-color={player === 'player1' ? 'var(--colour-primary)' : 'var(--colour-secondary)'}
-	on:click={() => {
+	onclick={() => {
 		if (channel) {
 			channel.publish('turn', {
 				player,
 				vertical: false,
 				row: rowIndex,
-				column: columnIndex
+				column: columnIndex,
 			});
 		}
 	}}

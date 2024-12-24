@@ -44,7 +44,7 @@ export const actions: Actions = {
 				const { clientId, name } = JSON.parse(session);
 
 				await locals.redis.hset(REDIS_HASHSET_KEY, {
-					[gameId]: JSON.stringify({ player1, player2 })
+					[gameId]: JSON.stringify({ player1, player2 }),
 				});
 
 				// player name stored to cookie
@@ -56,14 +56,14 @@ export const actions: Actions = {
 						path: '/',
 						expires: new Date(Temporal.Now.plainDateTimeISO().add({ hours: 2 }).toString()),
 						sameSite: 'lax',
-						httpOnly: true
-					}
+						httpOnly: true,
+					},
 				);
-				 redirect(303, '/');
+				redirect(303, '/');
 			}
 		}
 		return fail(400, {});
-	}
+	},
 };
 
 export const load: PageServerLoad = async function load({ cookies, url }) {

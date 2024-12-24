@@ -3,14 +3,25 @@
 	import type { PlayerDesignation } from '$lib/types';
 	import LogoutIcon from '$lib/components/Icons/Logout.svelte';
 
-	export let name: string;
-	export let player: PlayerDesignation;
-	export let serviceStatus: string;
-	export let playerNumber: number;
-	export let otherPlayerNumber: number;
-	export let player1Score: number;
-	export let player2Score: number;
-	export let playworthyCells: number;
+	let {
+		name,
+		player,
+		serviceStatus,
+		playerNumber,
+		otherPlayerNumber,
+		player1Score,
+		player2Score,
+		playworthyCells,
+	}: {
+		name: string;
+		player: PlayerDesignation;
+		serviceStatus: string;
+		playerNumber: number;
+		otherPlayerNumber: number;
+		player1Score: number;
+		player2Score: number;
+		playworthyCells: number;
+	} = $props();
 </script>
 
 <div class="player-name">
@@ -19,7 +30,7 @@
 			class="player-indicator"
 			class:player-1={player === 'player1'}
 			class:player-2={player === 'player2'}
-		/>{/if}Playing as {name}
+		></div>{/if}Playing as {name}
 	<form class="logout" action="?/logout" method="POST">
 		<button type="submit"><span class="screen-reader-text">Log out</span> <LogoutIcon /></button>
 	</form>
@@ -50,6 +61,7 @@
 		align-items: center;
 		margin-bottom: var(--spacing-8);
 	}
+
 	.logout {
 		margin-left: auto;
 	}
@@ -61,6 +73,7 @@
 		padding: var(--spacing-2);
 		box-shadow: var(--shadow-elevation-low);
 	}
+
 	.network-status {
 		font-size: var(--font-size-0);
 		margin-bottom: var(--spacing-4);
@@ -95,12 +108,14 @@
 		grid-area: score-1-label;
 		text-align: right;
 	}
+
 	.score-numbers {
 		grid-area: score-numbers;
 		font-weight: var(--font-weight-bold);
 		font-size: var(--font-size-3);
 		text-align: center;
 	}
+
 	.score-2-label {
 		grid-area: score-2-label;
 	}
@@ -108,6 +123,7 @@
 	.turn {
 		margin-bottom: var(--spacing-8);
 	}
+
 	.player-indicator {
 		width: var(--spacing-4);
 		height: var(--spacing-4);

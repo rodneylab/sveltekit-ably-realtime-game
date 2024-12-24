@@ -4,10 +4,17 @@
 	import type { Types } from 'ably';
 	import HorizontalLine from './HorizontalLine.svelte';
 
-	export let channel: Types.RealtimeChannelPromise | null;
-	export let player: PlayerDesignation;
-	export let rowIndex: number;
-	export let columnCount: number;
+	let {
+		channel,
+		player,
+		rowIndex,
+		columnCount,
+	}: {
+		channel: Types.RealtimeChannelPromise | null;
+		player: PlayerDesignation;
+		rowIndex: number;
+		columnCount: number;
+	} = $props();
 </script>
 
 <div class="horizontals-wrapper">

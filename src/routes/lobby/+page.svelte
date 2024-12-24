@@ -11,21 +11,20 @@
 	import { Temporal } from '@js-temporal/polyfill';
 	import type { Types } from 'ably';
 	import ably from 'ably';
-	import { onMount, afterUpdate } from 'svelte';
+	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
 
 	const { Realtime } = ably;
 
-	export let data: PageData;
+	let { data }: PageData = $props();
 
 	const { ablyChannelName } = app;
 
-	let { myClientId, name, somethingWentWrong, token } = data ?? {};
-	$: ({ myClientId, name, somethingWentWrong, token } = data ?? {});
+	let { myClientId, name, somethingWentWrong, token } = $derived(data ?? {});
 
-	let channel: Types.RealtimeChannelPromise | null = null;
+	let channel: Types.RealtimeChannelPromise | null = $state(null);
 
-	let presentPlayers: { clientId: string; name: string; timestamp: number }[] = [];
+	let presentPlayers: { clientId: string; name: string; timestamp: number }[] = $state([]);
 
 	interface GameInvitation {
 		player1: string;
@@ -34,8 +33,8 @@
 		name: string;
 	}
 
-	let incomingInvitation: GameInvitation | null = null;
-	let openInvitation: GameInvitation | null = null;
+	let incomingInvitation: GameInvitation | null = $state(null);
+	let openInvitation: GameInvitation | null = $state(null);
 
 	onMount(async () => {
 		const ably = new Realtime.Promise({
@@ -43,7 +42,7 @@
 
 			authCallback: () => {
 				/* todo(rodneylab): add token refresh logic */
-			}
+			},
 		});
 
 		await ably.connection.once('connected');
@@ -65,7 +64,7 @@
 							player1: sender,
 							player2: myClientId,
 							gameId,
-							name: player1Name
+							name: player1Name,
 						};
 					} else if (type === 'accept-invitation') {
 						// other player has accpeted this players previously extended invitation
@@ -78,7 +77,7 @@
 						const response = await fetch('?/play', {
 							credentials: 'same-origin',
 							method: 'POST',
-							body
+							body,
 						});
 						const result = deserialize(await response.text());
 						const { type } = result;
@@ -111,32 +110,25 @@
 								accumulator[clientId] = {
 									clientId,
 									name: data.name,
-									timestamp
+									timestamp,
 								};
 							}
 						}
 						return accumulator;
 					},
-					initial
+					initial,
 				);
 
 				presentPlayers = Object.entries(presentPlayersObject)
-					.map(([_key, value]) => value)
+					.map(([, value]) => value)
 					.filter(({ clientId }) => clientId !== myClientId);
 			}
 		});
 	});
 
-	afterUpdate(async () => {
-		// reconnect players to presence if something went wrong setting up their game
-		if (somethingWentWrong) {
-			await channel?.presence.enter({ name });
-		}
-	});
-
 	async function handleInvitation({
 		otherPlayerClientId,
-		otherPlayerName
+		otherPlayerName,
 	}: {
 		otherPlayerClientId: string;
 		otherPlayerName: string;
@@ -146,7 +138,7 @@
 			player1: myClientId,
 			player2: otherPlayerClientId,
 			gameId,
-			name: otherPlayerName
+			name: otherPlayerName,
 		};
 
 		await channel?.presence.update({
@@ -154,7 +146,7 @@
 			sender: myClientId,
 			target: otherPlayerClientId,
 			gameId,
-			name
+			name,
 		});
 	}
 
@@ -166,27 +158,30 @@
 				sender: myClientId,
 				target: player2,
 				gameId,
-				name
+				name,
 			});
 			openInvitation = null;
 		}
 	}
 
-	async function handleInvitationAcceptance(this: HTMLFormElement) {
+	async function handleInvitationAcceptance(
+		event: SubmitEvent & { currentTarget: EventTarget & HTMLFormElement },
+	) {
+		event.preventDefault();
 		if (incomingInvitation) {
 			const { player1: target, player2: sender, gameId } = incomingInvitation;
 			await channel?.presence.update({
 				type: 'accept-invitation',
 				sender,
 				target,
-				gameId
+				gameId,
 			});
-			const body = new FormData(this);
+			const body = new FormData(event.currentTarget);
 			body.append('token', JSON.stringify(token));
-			const response = await fetch(this.action, {
+			const response = await fetch(event.currentTarget.action, {
 				credentials: 'same-origin',
 				method: 'POST',
-				body
+				body,
 			});
 			const result = deserialize(await response.text());
 			const { type } = result;
@@ -199,7 +194,6 @@
 		}
 	}
 
-	$: handleKeyDown;
 	function handleKeyDown(event: KeyboardEvent) {
 		const { key } = event;
 		if (key === 'Escape') {
@@ -244,15 +238,15 @@
 			<li>
 				<span class="player">
 					<span class="player-name">{otherPlayerName}</span> active {timestampToDurationString(
-						timestamp
+						timestamp,
 					)}</span
 				>
-				<button on:click={() => handleInvitation({ otherPlayerClientId, otherPlayerName })}
+				<button onclick={() => handleInvitation({ otherPlayerClientId, otherPlayerName })}
 					>Invite {otherPlayerName}</button
 				>
 			</li>
 		{:else}
-			There aren&rsquo;t any other players waiting right now.
+			There aren&rsquo;t any other players waiting right&nbps;now.
 		{/each}
 	</ul>
 
@@ -261,14 +255,14 @@
 		<section class="modal-wrapper">
 			<div
 				use:clickOutside
-				on:outclick={() => {
+				onoutclick={() => {
 					incomingInvitation = null;
 				}}
 				class="modal-content incoming-invite"
 			>
 				<div class="close-button-wrapper">
 					<button
-						on:click={() => {
+						onclick={() => {
 							incomingInvitation = null;
 						}}
 						type="button"
@@ -279,7 +273,7 @@
 					>
 				</div>
 				<p>{incomingInvitation.name} invited you to join a game!</p>
-				<form action="?/play" method="POST" on:submit|preventDefault={handleInvitationAcceptance}>
+				<form action="?/play" method="POST" onsubmit={handleInvitationAcceptance}>
 					<div>
 						<input type="hidden" name="player1" value={player1} />
 						<input type="hidden" name="player2" value={player2} />
@@ -297,9 +291,9 @@
 	{#if openInvitation}
 		{@const { name } = openInvitation}
 		<section class="modal-wrapper">
-			<div use:clickOutside on:outclick={handleRescindInvitation} class="modal-content">
+			<div use:clickOutside onoutclick={handleRescindInvitation} class="modal-content">
 				<div class="close-button-wrapper">
-					<button on:click={handleRescindInvitation} type="button" class="close-button">
+					<button onclick={handleRescindInvitation} type="button" class="close-button">
 						<span class="screen-reader-text">Cancel invitation</span>
 						<CloseIcon width={24} /></button
 					>

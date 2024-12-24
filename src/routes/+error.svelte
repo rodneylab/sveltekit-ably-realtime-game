@@ -1,7 +1,4 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-
-	const { status, error } = $page;
 </script>
 
 <p>

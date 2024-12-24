@@ -12,7 +12,7 @@ export const actions: Actions = {
 		if (session) {
 			cookies.delete('session', { path: '/' });
 		}
-		 redirect(303, '/');
+		redirect(303, '/');
 	},
 	play: async ({ cookies, request }) => {
 		const form = await request.formData();
@@ -28,13 +28,13 @@ export const actions: Actions = {
 				path: '/',
 				expires: new Date(Temporal.Now.plainDateTimeISO().add({ hours: 2 }).toString()),
 				sameSite: 'lax',
-				httpOnly: true
+				httpOnly: true,
 			});
 
-			 redirect(303, '/lobby');
+			redirect(303, '/lobby');
 		}
 		return fail(400, { name, missing: true });
-	}
+	},
 };
 
 export const load: PageServerLoad = async function load({ cookies, locals }) {
@@ -56,6 +56,6 @@ export const load: PageServerLoad = async function load({ cookies, locals }) {
 				return { gameId, name, player, token, playerIds: [player1, player2] };
 			}
 		}
-		 redirect(303, '/lobby?error=true');
+		redirect(303, '/lobby?error=true');
 	}
 };

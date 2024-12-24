@@ -1,6 +1,6 @@
 <script lang="ts">
 	import GithubIcon from '$lib/components/Icons/Github.svelte';
-	import TwitterIcon from '$lib/components/Icons/Twitter.svelte';
+	import XIcon from '$lib/components/Icons/X.svelte';
 	import app from '$lib/configuration';
 
 	const { githubPage, twitterUsername } = app;
@@ -15,7 +15,7 @@
 				href="https://rodneylab.com/"
 				target="_blank"
 				rel="noopener noreferrer">Rodney Lab</a
-			>. Copyright {COPYRIGHT_ENTITY}&nbsp;2023.
+			>. Copyright {COPYRIGHT_ENTITY}&nbsp;2023&thinsp;&ndash;&thinsp;2024.
 		</p>
 		<nav class="footer-icons" aria-label="Links to external sites">
 			<ul>
@@ -29,11 +29,10 @@
 				</li>
 				<li>
 					<a
-						aria-label="Go to the Rodney Lab Twitter Page"
+						aria-label="Go to the Rodney Lab X Page"
 						rel="nofollow noopener noreferer"
 						target="_blank"
-						href={`https://twitter.com/intent/user?screen_name=${twitterUsername}`}
-						><TwitterIcon /></a
+						href={`https://x.com/intent/user?screen_name=${twitterUsername}`}><XIcon /></a
 					>
 				</li>
 			</ul>
