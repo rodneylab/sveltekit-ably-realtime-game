@@ -7,8 +7,10 @@
 	import type { Types } from 'ably';
 	import app from '$lib/configuration';
 
-	export let channel: Types.RealtimeChannelPromise | null = null;
-	export let player: PlayerDesignation = 'player1';
+	let {
+		channel = null,
+		player = 'player1',
+	}: { channel: Types.RealtimeChannelPromise | null; player: PlayerDesignation } = $props();
 
 	const { rowCount, columnCount } = app;
 </script>

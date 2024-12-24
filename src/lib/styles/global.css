@@ -26,8 +26,8 @@
 
 	--font-body: 'Space Mono', 'Space Mono Fallback: Courier New', 'Space Mono Fallback: Roboto',
 		monospace;
-	--font-heading: 'Space Grotesk', 'Space Grotesk Fallback: Arial', 'Space Grotesk Fallback: Roboto',
-		sans-serif;
+	--font-heading: 'Space Grotesk', 'Space Grotesk Fallback: Arial',
+		'Space Grotesk Fallback: Roboto', sans-serif;
 
 	/* Font Weight*/
 	--font-weight-light: 300;
@@ -163,9 +163,12 @@ h2 {
 }
 
 p {
-	max-width: var(--max-width-container-text);
 	line-height: var(--line-height-relaxed);
 	margin-block: var(--spacing-0) var(--spacing-4);
+}
+
+main p {
+	max-width: var(--max-width-container-text);
 }
 
 a {

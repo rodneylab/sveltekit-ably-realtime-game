@@ -4,11 +4,19 @@
 	import type { GridSquareDesignation, PlayerDesignation } from '$lib/types';
 	import type { Types } from 'ably';
 
-	export let channel: Types.RealtimeChannelPromise | null;
-	export let gridRow: GridSquareDesignation[];
-	export let player: PlayerDesignation;
-	export let rowIndex: number;
-	export let columnCount: number;
+	let {
+		channel,
+		gridRow,
+		player,
+		rowIndex,
+		columnCount,
+	}: {
+		channel: Types.RealtimeChannelPromise | null;
+		gridRow: GridSquareDesignation[];
+		player: PlayerDesignation;
+		rowIndex: number;
+		columnCount: number;
+	} = $props();
 </script>
 
 <div class="row-wrapper">
@@ -18,7 +26,7 @@
 			class="square"
 			class:player-1={gridRow[columnIndex] === 'player1'}
 			class:player-2={gridRow[columnIndex] === 'player2'}
-		/>
+		></div>
 	{/each}
 	<VerticalLine {channel} {player} {rowIndex} columnIndex={columnCount} />
 </div>

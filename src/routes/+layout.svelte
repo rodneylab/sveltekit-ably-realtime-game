@@ -4,6 +4,8 @@
 	import '$lib/styles/fonts.css';
 	import '$lib/styles/global.css';
 
+	let { children } = $props();
+
 	const title = 'Sqvuably: SvelteKit Ably Real-time Squares Game';
 	const description =
 		'SvelteKit Ably: introduction to using Svelte with Ably and building a real-time ♟️ game or instant 💬 chat with serverless WebSockets.';
@@ -40,7 +42,7 @@
 
 <Header />
 <main>
-	<slot />
+	{@render children?.()}
 </main>
 <Footer />
 

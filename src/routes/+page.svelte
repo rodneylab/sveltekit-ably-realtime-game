@@ -19,24 +19,22 @@
 
 	const { Realtime } = ably;
 
-	export let data: PageData;
+	let { data }: PageData = $props();
 
 	const { ablyChannelName, rowCount, columnCount } = app;
 
-	let [player1Score, player2Score] = $score;
-	$: [player1Score, player2Score] = $score;
-	let { gameId, name, player = null, token } = data ?? {};
+	let [player1Score, player2Score] = $derived($score);
+	let { name, player = null, token } = data ?? {};
 
-	let channel: Types.RealtimeChannelPromise | null = null;
-	$: serviceStatus = channel ? 'Connected to Ably' : 'Offline';
+	let channel: Types.RealtimeChannelPromise | null = $state(null);
+	let serviceStatus = $derived(channel ? 'Connected to Ably' : 'Offline');
 
-	let playerNumber = (player && player === 'player1' ? 1 : 2) ?? 0;
-	let otherPlayerNumber = (player && player === 'player1' ? 2 : 1) ?? 0;
+	let playerNumber = player && player === 'player1' ? 1 : 2;
+	let otherPlayerNumber = player && player === 'player1' ? 2 : 1;
 
-	let playworthyCells = columnCount * rowCount;
+	let playworthyCells = $state(columnCount * rowCount);
 
-	let otherPlayer: PlayerDesignation =
-		(player && playerNumber === 1 ? 'player2' : 'player1') ?? null;
+	let otherPlayer: PlayerDesignation = $state(player && playerNumber === 1 ? 'player2' : 'player1');
 
 	onMount(async () => {
 		// serviceStatus = 'Offline';
@@ -46,7 +44,7 @@
 
 			authCallback: () => {
 				/* todo(rodneylab): add token refresh logic */
-			}
+			},
 		});
 
 		await ably.connection.once('connected');
@@ -75,10 +73,10 @@
 							// changed column
 							messagePlayer,
 							//columns after changed column
-							...$verticals[row].slice(column + 1)
+							...$verticals[row].slice(column + 1),
 						],
 						// rows after changed row
-						...$verticals.slice(row + 1)
+						...$verticals.slice(row + 1),
 					]);
 				} else {
 					horizontals.set([
@@ -86,9 +84,9 @@
 						[
 							...$horizontals[row].slice(0, column),
 							messagePlayer,
-							...$horizontals[row].slice(column + 1)
+							...$horizontals[row].slice(column + 1),
 						],
-						...$horizontals.slice(row + 1)
+						...$horizontals.slice(row + 1),
 					]);
 				}
 				// if other player has played it is now my turn
@@ -105,9 +103,9 @@
 						currentRow.reduce(
 							(rowRunningCount, currentSquare) =>
 								rowRunningCount + (currentSquare === null ? 1 : 0),
-							runningCount
+							runningCount,
 						),
-					0
+					0,
 				);
 			}
 		});

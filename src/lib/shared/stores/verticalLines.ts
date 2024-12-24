@@ -5,8 +5,8 @@ import { writable } from 'svelte/store';
 const { rowCount, columnCount } = app;
 
 // Matrix representing all the vertical square borders in the grid
-let verticals: PlayerDesignation[][] = Array.from({ length: rowCount }, () =>
-	Array.from({ length: columnCount + 1 }, () => null)
+const verticals: PlayerDesignation[][] = Array.from({ length: rowCount }, () =>
+	Array.from({ length: columnCount + 1 }, () => null),
 );
 
 const store = writable<PlayerDesignation[][]>(verticals);

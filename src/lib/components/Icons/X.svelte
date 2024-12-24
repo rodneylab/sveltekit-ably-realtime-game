@@ -1,6 +1,6 @@
 <script>
 	let {
-		label = 'close icon',
+		label = 'X (social network) icon',
 		colour = 'inherit',
 		ariaHidden = false,
 		width = 32,
@@ -19,7 +19,7 @@
 		viewBox="0 0 24 24"
 		fill="none"
 	>
-		<use href="/sprite.svg#close" />
+		<use href="/sprite.svg#x" />
 	</svg>
 </div>
 

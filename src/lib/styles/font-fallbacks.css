@@ -3,8 +3,8 @@
 :root {
 	--font-body: 'Space Mono', 'Space Mono Fallback: Courier New', 'Space Mono Fallback: Roboto',
 		monospace;
-	--font-heading: 'Space Grotesk', 'Space Grotesk Fallback: Arial', 'Space Grotesk Fallback: Roboto',
-		sans-serif;
+	--font-heading: 'Space Grotesk', 'Space Grotesk Fallback: Arial',
+		'Space Grotesk Fallback: Roboto', sans-serif;
 }
 
 @font-face {

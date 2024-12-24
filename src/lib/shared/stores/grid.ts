@@ -6,14 +6,14 @@ import { derived } from 'svelte/store';
 
 const { rowCount, columnCount } = app;
 
-let initialGrid: GridSquareDesignation[][] = Array.from({ length: rowCount }, () =>
-	Array.from({ length: columnCount }, () => null)
+const initialGrid: GridSquareDesignation[][] = Array.from({ length: rowCount }, () =>
+	Array.from({ length: columnCount }, () => null),
 );
 
 const store = derived(
 	[horizontals, verticals],
 	([$horizontals, $verticals]) => {
-		let result = initialGrid;
+		const result = initialGrid;
 
 		initialGrid.forEach((row, rowIndex) => {
 			row.forEach((_, columnIndex) => {
@@ -51,7 +51,7 @@ const store = derived(
 		});
 		return result;
 	},
-	initialGrid
+	initialGrid,
 );
 
 export default store;
