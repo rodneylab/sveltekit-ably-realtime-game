@@ -234,7 +234,7 @@
 	</div>
 	<h2>Waiting players</h2>
 	<ul>
-		{#each presentPlayers as { clientId: otherPlayerClientId, name: otherPlayerName, timestamp }}
+		{#each presentPlayers as { clientId: otherPlayerClientId, name: otherPlayerName, timestamp } (otherPlayerClientId)}
 			<li>
 				<span class="player">
 					<span class="player-name">{otherPlayerName}</span> active {timestampToDurationString(
@@ -246,7 +246,7 @@
 				>
 			</li>
 		{:else}
-			There aren&rsquo;t any other players waiting right&nbps;now.
+			There aren&rsquo;t any other players waiting right&nbsp;now.
 		{/each}
 	</ul>
 

@@ -1,10 +1,10 @@
 /* This file is generated using capsize. Run `vite-node capsize-font-fallbacks.ts` to refresh. */
 
 :root {
-	--font-body: 'Space Mono', 'Space Mono Fallback: Courier New', 'Space Mono Fallback: Roboto',
-		monospace;
-	--font-heading: 'Space Grotesk', 'Space Grotesk Fallback: Arial',
-		'Space Grotesk Fallback: Roboto', sans-serif;
+	--font-body:
+		'Space Mono', 'Space Mono Fallback: Courier New', 'Space Mono Fallback: Roboto', monospace;
+	--font-heading:
+		'Space Grotesk', 'Space Grotesk Fallback: Arial', 'Space Grotesk Fallback: Roboto', sans-serif;
 }
 
 @font-face {
