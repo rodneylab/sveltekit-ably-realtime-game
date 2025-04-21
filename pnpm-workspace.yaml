@@ -1,0 +1,5 @@
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - esbuild
+  - netlify-cli
+  - svelte-preprocess

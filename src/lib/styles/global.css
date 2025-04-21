@@ -24,10 +24,10 @@
 	--max-width-wrapper: var(--max-width-container-lg);
 	--max-width-full: 100%;
 
-	--font-body: 'Space Mono', 'Space Mono Fallback: Courier New', 'Space Mono Fallback: Roboto',
-		monospace;
-	--font-heading: 'Space Grotesk', 'Space Grotesk Fallback: Arial',
-		'Space Grotesk Fallback: Roboto', sans-serif;
+	--font-body:
+		'Space Mono', 'Space Mono Fallback: Courier New', 'Space Mono Fallback: Roboto', monospace;
+	--font-heading:
+		'Space Grotesk', 'Space Grotesk Fallback: Arial', 'Space Grotesk Fallback: Roboto', sans-serif;
 
 	/* Font Weight*/
 	--font-weight-light: 300;
@@ -61,10 +61,11 @@
 	--colour-primary-tint-50: hsl(28 100% 77%);
 
 	/* CREDIT: https://www.joshwcomeau.com/gradient-generator/ */
-	--colour-primary-linear-gradient-colours: hsl(28deg 100% 53%) 0%, hsl(28deg 100% 54%) 21%,
-		hsl(28deg 100% 56%) 30%, hsl(28deg 100% 57%) 39%, hsl(28deg 100% 58%) 46%,
-		hsl(28deg 100% 59%) 54%, hsl(28deg 100% 60%) 61%, hsl(28deg 100% 61%) 69%,
-		hsl(28deg 100% 61%) 79%, hsl(28deg 100% 62%) 100%;
+	--colour-primary-linear-gradient-colours:
+		hsl(28deg 100% 53%) 0%, hsl(28deg 100% 54%) 21%, hsl(28deg 100% 56%) 30%,
+		hsl(28deg 100% 57%) 39%, hsl(28deg 100% 58%) 46%, hsl(28deg 100% 59%) 54%,
+		hsl(28deg 100% 60%) 61%, hsl(28deg 100% 61%) 69%, hsl(28deg 100% 61%) 79%,
+		hsl(28deg 100% 62%) 100%;
 	--colour-primary-linear-gradient: linear-gradient(
 		225deg,
 		var(--colour-primary-linear-gradient-colours)
@@ -83,10 +84,12 @@
 
 	/* CREDIT: https://www.joshwcomeau.com/shadow-palette/ */
 	--shadow-color: 45deg 11% 42%;
-	--shadow-elevation-low: -1px 1px 1.4px hsl(var(--shadow-color) / 0.48),
+	--shadow-elevation-low:
+		-1px 1px 1.4px hsl(var(--shadow-color) / 0.48),
 		-1.5px 1.5px 2.1px -1.7px hsl(var(--shadow-color) / 0.39),
 		-4px 4px 5.5px -3.5px hsl(var(--shadow-color) / 0.3);
-	--shadow-elevation-medium: -1px 1px 1.4px hsl(var(--shadow-color) / 0.51),
+	--shadow-elevation-medium:
+		-1px 1px 1.4px hsl(var(--shadow-color) / 0.51),
 		-2.7px 2.7px 3.7px -1.2px hsl(var(--shadow-color) / 0.43),
 		-7.6px 7.6px 10.5px -2.3px hsl(var(--shadow-color) / 0.36),
 		-20px 20px 27.6px -3.5px hsl(var(--shadow-color) / 0.29);
