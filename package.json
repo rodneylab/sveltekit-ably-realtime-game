@@ -27,17 +27,20 @@
 		"@js-temporal/polyfill": "^0.5.1",
 		"@sveltejs/adapter-node": "^5.4.0",
 		"@sveltejs/kit": "^2.49.1",
+		"@sveltejs/vite-plugin-svelte": "^6.2.1",
 		"@trivago/prettier-plugin-sort-imports": "^6.0.0",
 		"@types/eslint-config-prettier": "^6.11.3",
 		"@types/node": "^24.10.1",
 		"@typescript-eslint/eslint-plugin": "^8.48.1",
 		"@typescript-eslint/parser": "^8.48.1",
+		"@upstash/redis": "^1.35.7",
 		"ably": "^1.2.50",
 		"autoprefixer": "^10.4.22",
 		"commitlint": "^20.2.0",
 		"dompurify": "^3.3.0",
 		"eslint": "^9.39.1",
 		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-svelte": "^3.13.1",
 		"globals": "^16.5.0",
 		"husky": "^9.1.7",
 		"postcss": "^8.5.6",
@@ -72,10 +75,5 @@
 		"@csstools/css-parser-algorithms": "^2.1.0",
 		"@csstools/css-tokenizer": "^2.1.0",
 		"@types/node": "^18.15.11"
-	},
-	"dependencies": {
-		"@sveltejs/vite-plugin-svelte": "^6.2.1",
-		"@upstash/redis": "^1.35.7",
-		"eslint-plugin-svelte": "^3.13.1"
 	}
 }
