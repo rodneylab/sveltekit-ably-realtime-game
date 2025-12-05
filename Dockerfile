@@ -2,8 +2,8 @@ FROM node:24-alpine3.23@sha256:682368d8253e0c3364b803956085c456a612d738bd635926d
 COPY . /app
 WORKDIR /app
 
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.shrc" SHELL="$(which sh)" PNPM_VERSION=10.24.0 sh -
+SHELL ["/bin/ash", "-o", "pipefail", "-c"]
+RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.ashrc" SHELL="/bin/ash" PNPM_VERSION=10.24.0 sh -
 RUN pnpm install --frozen-lockfile && pnpm build && pnpm prune --production
 
 FROM gcr.io/distroless/nodejs24-debian13@sha256:224c2666ddccc33c3f31e9a2ddeb41f14661363f8c2f4921ad48768039a898a1
