@@ -12,29 +12,31 @@
 	import '$lib/styles/fonts.css';
 	import '$lib/styles/global.css';
 	import type { PlayerDesignation } from '$lib/types';
+	import type { PageData } from './$types';
 	import type { Types } from 'ably';
 	import ably from 'ably';
 	import { onMount } from 'svelte';
-	import type { PageData } from './$types';
 
 	const { Realtime } = ably;
 
-	let { data }: PageData = $props();
+	let data: PageData = $props();
 
 	const { ablyChannelName, rowCount, columnCount } = app;
 
 	let [player1Score, player2Score] = $derived($score);
-	let { name, player = null, token } = data ?? {};
+	let { name, player = null, token } = $derived(data ?? {});
 
 	let channel: Types.RealtimeChannelPromise | null = $state(null);
 	let serviceStatus = $derived(channel ? 'Connected to Ably' : 'Offline');
 
-	let playerNumber = player && player === 'player1' ? 1 : 2;
-	let otherPlayerNumber = player && player === 'player1' ? 2 : 1;
+	let playerNumber = $derived(player && player === 'player1' ? 1 : 2);
+	let otherPlayerNumber = $derived(player && player === 'player1' ? 2 : 1);
 
 	let playworthyCells = $state(columnCount * rowCount);
 
-	let otherPlayer: PlayerDesignation = $state(player && playerNumber === 1 ? 'player2' : 'player1');
+	let otherPlayer: PlayerDesignation = $derived(
+		player && playerNumber === 1 ? 'player2' : 'player1',
+	);
 
 	onMount(async () => {
 		// serviceStatus = 'Offline';

@@ -4,7 +4,7 @@
 		colour = 'inherit',
 		ariaHidden = false,
 		width = 48,
-		height = width,
+		height,
 	}: {
 		label?: string;
 		colour?: string;
@@ -12,6 +12,8 @@
 		width?: number;
 		height?: number;
 	} = $props();
+
+	let usedHeight = $derived(width && !height ? width : height);
 </script>
 
 <div class="logo">
@@ -21,7 +23,7 @@
 		aria-label={label}
 		role="img"
 		{width}
-		{height}
+		height={usedHeight}
 		viewBox="0 0 24 24"
 		fill="none"
 	>

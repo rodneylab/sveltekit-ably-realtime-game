@@ -8,15 +8,15 @@
 	import { clickOutside } from '$lib/shared/actions/clickOutside';
 	import '$lib/styles/fonts.css';
 	import '$lib/styles/global.css';
+	import type { PageData } from './$types';
 	import { Temporal } from '@js-temporal/polyfill';
 	import type { Types } from 'ably';
 	import ably from 'ably';
 	import { onMount } from 'svelte';
-	import type { PageData } from './$types';
 
 	const { Realtime } = ably;
 
-	let { data }: PageData = $props();
+	let data: PageData = $props();
 
 	const { ablyChannelName } = app;
 
