@@ -5,7 +5,7 @@ import type { Redis } from '@upstash/redis';
 declare global {
 	namespace svelteHTML {
 		interface HTMLAttributes<T> {
-			'on:outclick'?: (e: CustomEvent) => void;
+			onoutclick?: (e: CustomEvent) => void;
 		}
 	}
 	namespace App {
