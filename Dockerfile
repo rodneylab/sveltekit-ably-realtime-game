@@ -12,7 +12,7 @@ ARG PUBLIC_GITHUB_PAGE
 ARG PUBLIC_ROWS=4
 ARG PUBLIC_TWITTER_USERNAME
 
-RUN --mount=type=secret,id=ABLY_API_KEY --mount=type=secret,id=UPSTASH_REDIS_REST_URL --mount=type=secret,id=UPSTASH_REDIS_REST_TOKEN . "$HOME/.dashrc" \
+RUN --mount=type=secret,id=ABLY_API_KEY,env=ABLY_API_KEY --mount=type=secret,id=UPSTASH_REDIS_REST_URL,env=UPSTASH_REDIS_REST_URL --mount=type=secret,id=UPSTASH_REDIS_REST_TOKEN,env=UPSTASH_REDIS_REST_TOKEN . "$HOME/.dashrc" \
     && pnpm install --frozen-lockfile \
     && ABLY_API_KEY=$(cat /run/secrets/ABLY_API_KEY) \
     UPSTASH_REDIS_REST_URL=$(cat /run/secrets/UPSTASH_REDIS_REST_URL) \
