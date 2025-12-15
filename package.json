@@ -23,7 +23,7 @@
 		"@csstools/css-parser-algorithms": "^3.0.5",
 		"@csstools/css-tokenizer": "^3.0.4",
 		"@csstools/postcss-global-data": "^3.1.0",
-		"@eslint/js": "^9.39.1",
+		"@eslint/js": "^9.39.2",
 		"@js-temporal/polyfill": "^0.5.1",
 		"@sveltejs/adapter-node": "^5.4.0",
 		"@sveltejs/kit": "^2.49.1",
