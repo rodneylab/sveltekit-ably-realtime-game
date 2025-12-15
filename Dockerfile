@@ -12,7 +12,13 @@ ARG PUBLIC_GITHUB_PAGE
 ARG PUBLIC_ROWS=4
 ARG PUBLIC_TWITTER_USERNAME
 
-RUN . "$HOME/.dashrc" && pnpm install --frozen-lockfile && pnpm build && pnpm prune --production
+RUN --mount=type=secret,id=ABLY_API_KEY --mount=type=secret,id=UPSTASH_REDIS_REST_URL --mount=type=secret,id=UPSTASH_REDIS_REST_TOKEN . "$HOME/.dashrc" \
+    && pnpm install --frozen-lockfile \
+    && ABLY_API_KEY=$(cat /run/secrets/ABLY_API_KEY) \
+    UPSTASH_REDIS_REST_URL=$(cat /run/secrets/UPSTASH_REDIS_REST_URL) \
+    UPSTASH_REDIS_REST_TOKEN=$(cat /run/secrets/UPSTASH_REDIS_REST_TOKEN) \
+        pnpm build \
+    && pnpm prune --production
 
 FROM gcr.io/distroless/nodejs24-debian13@sha256:224c2666ddccc33c3f31e9a2ddeb41f14661363f8c2f4921ad48768039a898a1
 COPY --from=build-env /build /app
