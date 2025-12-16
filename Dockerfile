@@ -1,4 +1,4 @@
-FROM node:24.12.0-alpine3.23@sha256:7e0bd0460b26eb3854ea5b99b887a6a14d665d14cae694b78ae2936d14b2befb AS build-env
+FROM node:25.2.1-alpine3.23@sha256:fd164609b5ab0c6d49bac138ae06c347e72261ec6ae1de32b6aa9f5ee2271110 AS build-env
 COPY . /app
 WORKDIR /app
 
