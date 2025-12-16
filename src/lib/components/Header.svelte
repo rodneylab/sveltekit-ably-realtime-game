@@ -2,7 +2,6 @@
 	/* This is code is based on an adaptation by https://twitter.com/jaffathecake of
 	https://jsbin.com/mamisar/edit?html,css,js,output By https://twitter.com/flackrw 
 	*/
-
 	import { onMount } from 'svelte';
 
 	let header: HTMLDivElement;
@@ -36,6 +35,7 @@
 	style:margin-bottom="-{headerShifterHeight}px"
 	class="header"
 >
+	<!-- eslint-disable-next-line no-irregular-whitespace -->
 	<header class="wrapper">Real-time, online game built with Svelte and Ably.</header>
 </div>
 

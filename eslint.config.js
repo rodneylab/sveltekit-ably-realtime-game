@@ -1,6 +1,7 @@
-import prettier from 'eslint-config-prettier';
 import js from '@eslint/js';
+import prettier from 'eslint-config-prettier';
 import svelte from 'eslint-plugin-svelte';
+import { globalIgnores } from 'eslint/config';
 import globals from 'globals';
 import ts from 'typescript-eslint';
 
@@ -28,7 +29,22 @@ export default ts.config(
 			},
 		},
 	},
+	globalIgnores(['.svelte-kit/', 'build/', 'dist/', 'postcss.config.cjs']),
 	{
+		rules: {
+			'@typescript-eslint/no-unused-vars': [
+				'error',
+				{
+					args: 'all',
+					argsIgnorePattern: '^_',
+					caughtErrors: 'all',
+					caughtErrorsIgnorePattern: '^_',
+					destructuredArrayIgnorePattern: '^_',
+					varsIgnorePattern: '^_',
+					ignoreRestSiblings: true,
+				},
+			],
+		},
 		ignores: [
 			'.netlify',
 			'.svelte-kit/',

@@ -20,7 +20,7 @@
 </script>
 
 <div class="row-wrapper">
-	{#each $verticals[rowIndex].slice(0, columnCount) as _, columnIndex}
+	{#each $verticals[rowIndex].slice(0, columnCount) as _, columnIndex (columnIndex)}
 		<VerticalLine {channel} {player} {rowIndex} {columnIndex} />
 		<div
 			class="square"

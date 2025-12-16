@@ -4,7 +4,7 @@ import type { Redis } from '@upstash/redis';
 // for information about these interfaces
 declare global {
 	namespace svelteHTML {
-		interface HTMLAttributes<T> {
+		interface HTMLAttributes {
 			onoutclick?: (e: CustomEvent) => void;
 		}
 	}
@@ -12,8 +12,6 @@ declare global {
 		interface Locals {
 			redis: Redis;
 		}
-		// interface PageData {}
-		// interface Platform {}
 	}
 }
 

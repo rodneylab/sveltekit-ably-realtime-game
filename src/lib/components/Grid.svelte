@@ -1,11 +1,11 @@
 <script lang="ts">
 	import GridRow from '$lib/components/GridRow.svelte';
 	import HorizontalLineRow from '$lib/components/HorizontalLineRow.svelte';
+	import app from '$lib/configuration';
 	import grid from '$lib/shared/stores/grid';
 	import '$lib/styles/global.css';
 	import type { PlayerDesignation } from '$lib/types';
 	import type { Types } from 'ably';
-	import app from '$lib/configuration';
 
 	let {
 		channel = null,
@@ -16,7 +16,7 @@
 </script>
 
 <section class="grid-wrapper">
-	{#each $grid as _, rowIndex}
+	{#each $grid as _, rowIndex (rowIndex)}
 		<HorizontalLineRow {channel} {columnCount} {player} {rowIndex} />
 		<GridRow {channel} gridRow={$grid[rowIndex]} {player} {rowIndex} {columnCount} />
 	{/each}
