@@ -1,8 +1,8 @@
 <script lang="ts">
 	import horizontals from '$lib/shared/stores/horizontalLines';
 	import type { PlayerDesignation } from '$lib/types';
-	import type { Types } from 'ably';
 	import HorizontalLine from './HorizontalLine.svelte';
+	import type { Types } from 'ably';
 
 	let {
 		channel,
@@ -18,7 +18,7 @@
 </script>
 
 <div class="horizontals-wrapper">
-	{#each $horizontals[rowIndex].slice(0, columnCount) as _, columnIndex}
+	{#each $horizontals[rowIndex].slice(0, columnCount) as _, columnIndex (columnIndex)}
 		<HorizontalLine {channel} {player} {rowIndex} {columnIndex} />
 	{/each}
 </div>
