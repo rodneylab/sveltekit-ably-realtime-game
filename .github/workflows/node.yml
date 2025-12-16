@@ -8,6 +8,15 @@ on:
     branches:
       - main
 permissions: read-all
+env:
+  PUBLIC_ROWS: 4
+  PUBLIC_COLUMNS: 4
+  ABLY_API_KEY: 'ABC123'
+  PUBLIC_ABLY_CHANNEL: 'some-channel'
+  PUBLIC_GITHUB_PAGE: 'github-page'
+  PUBLIC_TWITTER_USERNAME: 'twitterUser'
+  UPSTASH_REDIS_REST_URL: 'https://upstash.example.com'
+  UPSTASH_REDIS_REST_TOKEN: 'ABC123'
 jobs:
   test:
     name: Vite Tests
