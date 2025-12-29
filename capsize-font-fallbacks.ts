@@ -1,9 +1,9 @@
 import { createFontStack } from '@capsizecss/core';
 import arial from '@capsizecss/metrics/arial';
-import roboto from '@capsizecss/metrics/roboto';
 import courierNew from '@capsizecss/metrics/courierNew';
-import spaceMono from '@capsizecss/metrics/spaceMono';
+import roboto from '@capsizecss/metrics/roboto';
 import spaceGrotesk from '@capsizecss/metrics/spaceGrotesk';
+import spaceMono from '@capsizecss/metrics/spaceMono';
 import { writeFileSync } from 'node:fs';
 import path from 'node:path';
 

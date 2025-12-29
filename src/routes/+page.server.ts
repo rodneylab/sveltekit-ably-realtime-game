@@ -1,8 +1,8 @@
 import type { Game, PlayerDesignation } from '$lib/types';
+import type { Actions, PageServerLoad } from './$types';
 import { Temporal } from '@js-temporal/polyfill';
 import { fail, redirect } from '@sveltejs/kit';
 import type { Types } from 'ably';
-import type { Actions, PageServerLoad } from './$types';
 
 const REDIS_HASHSET_KEY = 'games';
 

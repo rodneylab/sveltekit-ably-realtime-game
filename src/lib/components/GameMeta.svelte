@@ -1,7 +1,7 @@
 <script lang="ts">
+	import LogoutIcon from '$lib/components/Icons/Logout.svelte';
 	import myTurn from '$lib/shared/stores/myTurn';
 	import type { PlayerDesignation } from '$lib/types';
-	import LogoutIcon from '$lib/components/Icons/Logout.svelte';
 
 	let {
 		name,
