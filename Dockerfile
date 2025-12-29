@@ -1,10 +1,10 @@
-FROM node:24.12.0-alpine3.23@sha256:7e0bd0460b26eb3854ea5b99b887a6a14d665d14cae694b78ae2936d14b2befb AS build-env
+FROM node:24.12.0-alpine3.23@sha256:c921b97d4b74f51744057454b306b418cf693865e73b8100559189605f6955b8 AS build-env
 COPY . /app
 WORKDIR /app
 
 RUN apk update && apk upgrade && apk --no-cache add dash=0.5.13.1-r0
 SHELL ["/bin/ash", "-o", "pipefail", "-c"]
-RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.dashrc" SHELL="$(which dash)" PNPM_VERSION=10.26.0 dash -
+RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.dashrc" SHELL="$(which dash)" PNPM_VERSION=10.26.2 dash -
 
 ARG PUBLIC_ABLY_CHANNEL
 ARG PUBLIC_COLUMNS=4
