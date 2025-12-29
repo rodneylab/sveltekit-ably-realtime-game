@@ -33,7 +33,7 @@
 		"@types/node": "^24.10.4",
 		"@typescript-eslint/eslint-plugin": "^8.50.0",
 		"@typescript-eslint/parser": "^8.50.0",
-		"@upstash/redis": "^1.35.8",
+		"@upstash/redis": "^1.36.0",
 		"ably": "^1.2.50",
 		"autoprefixer": "^10.4.23",
 		"commitlint": "^20.2.0",
