@@ -1,9 +1,9 @@
 import { ABLY_API_KEY } from '$env/static/private';
+import type { Actions, PageServerLoad } from './$types';
 import { Temporal } from '@js-temporal/polyfill';
 import { fail, redirect, error as svelteKitError } from '@sveltejs/kit';
 import type { Types } from 'ably';
 import Ably from 'ably';
-import type { Actions, PageServerLoad } from './$types';
 
 const REDIS_HASHSET_KEY = 'games';
 
