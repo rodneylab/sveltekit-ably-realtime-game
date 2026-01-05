@@ -4,7 +4,7 @@ WORKDIR /app
 
 RUN apk update && apk upgrade && apk --no-cache add dash=0.5.13.1-r0
 SHELL ["/bin/ash", "-o", "pipefail", "-c"]
-RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.dashrc" SHELL="$(which dash)" PNPM_VERSION=10.26.2 dash -
+RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.dashrc" SHELL="$(which dash)" PNPM_VERSION=10.27.0 dash -
 
 ARG PUBLIC_ABLY_CHANNEL
 ARG PUBLIC_COLUMNS=4
