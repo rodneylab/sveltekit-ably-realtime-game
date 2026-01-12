@@ -17,7 +17,7 @@ RUN --mount=type=secret,id=ABLY_API_KEY,env=ABLY_API_KEY --mount=type=secret,id=
     && pnpm build \
     && pnpm prune --production
 
-FROM gcr.io/distroless/nodejs24-debian13@sha256:484fc5087efc6a00cfea027a3c3807e4bb8ff7be6ae81df8cc5f0b65fc76282e
+FROM gcr.io/distroless/nodejs24-debian13@sha256:97cb93d83591bbfb12d829e6e750a3b19094efca6af3c66924e675b8d12e2bc8
 COPY --from=build-env /app/build /app/build
 COPY --from=build-env /app/package.json /app/package.json
 COPY --from=build-env /app/node_modules /app/node_modules
