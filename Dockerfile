@@ -1,10 +1,10 @@
-FROM node:24.12.0-alpine3.23@sha256:c921b97d4b74f51744057454b306b418cf693865e73b8100559189605f6955b8 AS build-env
+FROM node:24.13.0-alpine3.23@sha256:931d7d57f8c1fd0e2179dbff7cc7da4c9dd100998bc2b32afc85142d8efbc213 AS build-env
 COPY . /app
 WORKDIR /app
 
 RUN apk update && apk upgrade && apk --no-cache add dash=0.5.13.1-r0
 SHELL ["/bin/ash", "-o", "pipefail", "-c"]
-RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.dashrc" SHELL="$(which dash)" PNPM_VERSION=10.27.0 dash -
+RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.dashrc" SHELL="$(which dash)" PNPM_VERSION=10.28.0 dash -
 
 ARG PUBLIC_ABLY_CHANNEL
 ARG PUBLIC_COLUMNS=4
@@ -17,7 +17,7 @@ RUN --mount=type=secret,id=ABLY_API_KEY,env=ABLY_API_KEY --mount=type=secret,id=
     && pnpm build \
     && pnpm prune --production
 
-FROM gcr.io/distroless/nodejs24-debian13@sha256:484fc5087efc6a00cfea027a3c3807e4bb8ff7be6ae81df8cc5f0b65fc76282e
+FROM gcr.io/distroless/nodejs24-debian13@sha256:97cb93d83591bbfb12d829e6e750a3b19094efca6af3c66924e675b8d12e2bc8
 COPY --from=build-env /app/build /app/build
 COPY --from=build-env /app/package.json /app/package.json
 COPY --from=build-env /app/node_modules /app/node_modules
