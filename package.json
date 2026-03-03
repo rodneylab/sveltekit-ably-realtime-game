@@ -35,7 +35,7 @@
 		"@typescript-eslint/eslint-plugin": "^8.56.1",
 		"@typescript-eslint/parser": "^8.56.1",
 		"@upstash/redis": "^1.36.3",
-		"ably": "^1.2.50",
+		"ably": "^2.18.0",
 		"autoprefixer": "^10.4.27",
 		"commitlint": "^20.4.2",
 		"dompurify": "^3.3.1",
