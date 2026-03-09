@@ -37,7 +37,7 @@
 		"@upstash/redis": "^1.36.3",
 		"ably": "^1.2.50",
 		"autoprefixer": "^10.4.27",
-		"commitlint": "^20.4.2",
+		"commitlint": "^20.4.3",
 		"dompurify": "^3.3.1",
 		"eslint": "^10.0.2",
 		"eslint-config-prettier": "^10.1.8",
