@@ -63,8 +63,8 @@ importers:
         specifier: ^1.2.50
         version: 1.2.50
       autoprefixer:
-        specifier: ^10.4.27
-        version: 10.4.27(postcss@8.5.9)
+        specifier: ^10.5.0
+        version: 10.5.0(postcss@8.5.9)
       commitlint:
         specifier: ^20.5.0
         version: 20.5.0(@types/node@24.12.2)(conventional-commits-parser@6.4.0)(typescript@6.0.2)
@@ -1616,8 +1616,8 @@ packages:
     resolution: {integrity: sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==}
     engines: {node: '>=8'}
 
-  autoprefixer@10.4.27:
-    resolution: {integrity: sha512-NP9APE+tO+LuJGn7/9+cohklunJsXWiaWEfV3si4Gi/XHDwVNgkwr1J3RQYFIvPy76GmJ9/bW8vyoU1LcxwKHA==}
+  autoprefixer@10.5.0:
+    resolution: {integrity: sha512-FMhOoZV4+qR6aTUALKX2rEqGG+oyATvwBt9IIzVR5rMa2HRWPkxf+P+PAJLD1I/H5/II+HuZcBJYEFBpq39ong==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
     peerDependencies:
@@ -1638,8 +1638,8 @@ packages:
     resolution: {integrity: sha512-ZXBDPMt/v/8fsIqn+Z5VwrhdR6jVka0bYobHdGia0Nxi7BJ9i/Uvml3AocHIBtIIBhZjBw5MR0aR4ROs/8+SNg==}
     engines: {node: '>= 0.4'}
 
-  baseline-browser-mapping@2.10.18:
-    resolution: {integrity: sha512-VSnGQAOLtP5mib/DPyg2/t+Tlv65NTBz83BJBJvmLVHHuKJVaDOBvJJykiT5TR++em5nfAySPccDZDa4oSrn8A==}
+  baseline-browser-mapping@2.10.20:
+    resolution: {integrity: sha512-1AaXxEPfXT+GvTBJFuy4yXVHWJBXa4OdbIebGN/wX5DlsIkU0+wzGnd2lOzokSk51d5LUmqjgBLRLlypLUqInQ==}
     engines: {node: '>=6.0.0'}
     hasBin: true
 
@@ -1684,8 +1684,8 @@ packages:
     resolution: {integrity: sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==}
     engines: {node: '>=6'}
 
-  caniuse-lite@1.0.30001787:
-    resolution: {integrity: sha512-mNcrMN9KeI68u7muanUpEejSLghOKlVhRqS/Za2IeyGllJ9I9otGpR9g3nsw7n4W378TE/LyIteA0+/FOZm4Kg==}
+  caniuse-lite@1.0.30001788:
+    resolution: {integrity: sha512-6q8HFp+lOQtcf7wBK+uEenxymVWkGKkjFpCvw5W25cmMwEDU45p1xQFBQv8JDlMMry7eNxyBaR+qxgmTUZkIRQ==}
 
   chokidar@4.0.3:
     resolution: {integrity: sha512-Qgzu8kfBvo+cA4962jnP1KkS6Dop5NS6g7R5LFYJr4b8Ub94PPQXUksCw9PvXoeXPRRddRNC5C1JQUR2SMGtnA==}
@@ -1875,8 +1875,8 @@ packages:
     resolution: {integrity: sha512-QM8q3zDe58hqUqjraQOmzZ1LIH9SWQJTlEKCH4kJ2oQvLZk7RbQXvtDM2XEq3fwkV9CCvvH4LA0AV+ogFsBM2Q==}
     engines: {node: '>=8'}
 
-  electron-to-chromium@1.5.335:
-    resolution: {integrity: sha512-q9n5T4BR4Xwa2cwbrwcsDJtHD/enpQ5S1xF1IAtdqf5AAgqDFmR/aakqH3ChFdqd/QXJhS3rnnXFtexU7rax6Q==}
+  electron-to-chromium@1.5.340:
+    resolution: {integrity: sha512-908qahOGocRMinT2nM3ajCEM99H4iPdv84eagPP3FfZy/1ZGeOy2CZYzjhms81ckOPCXPlW7LkY4XpxD8r1DrA==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -4547,10 +4547,10 @@ snapshots:
 
   astral-regex@2.0.0: {}
 
-  autoprefixer@10.4.27(postcss@8.5.9):
+  autoprefixer@10.5.0(postcss@8.5.9):
     dependencies:
       browserslist: 4.28.2
-      caniuse-lite: 1.0.30001787
+      caniuse-lite: 1.0.30001788
       fraction.js: 5.3.4
       picocolors: 1.1.1
       postcss: 8.5.9
@@ -4564,7 +4564,7 @@ snapshots:
 
   base64-js@1.0.2: {}
 
-  baseline-browser-mapping@2.10.18: {}
+  baseline-browser-mapping@2.10.20: {}
 
   boolbase@1.0.0: {}
 
@@ -4587,9 +4587,9 @@ snapshots:
 
   browserslist@4.28.2:
     dependencies:
-      baseline-browser-mapping: 2.10.18
-      caniuse-lite: 1.0.30001787
-      electron-to-chromium: 1.5.335
+      baseline-browser-mapping: 2.10.20
+      caniuse-lite: 1.0.30001788
+      electron-to-chromium: 1.5.340
       node-releases: 2.0.37
       update-browserslist-db: 1.2.3(browserslist@4.28.2)
 
@@ -4617,7 +4617,7 @@ snapshots:
 
   callsites@3.1.0: {}
 
-  caniuse-lite@1.0.30001787: {}
+  caniuse-lite@1.0.30001788: {}
 
   chokidar@4.0.3:
     dependencies:
@@ -4797,7 +4797,7 @@ snapshots:
     dependencies:
       is-obj: 2.0.0
 
-  electron-to-chromium@1.5.335: {}
+  electron-to-chromium@1.5.340: {}
 
   emoji-regex@8.0.0: {}
 
@@ -5695,7 +5695,7 @@ snapshots:
       '@csstools/postcss-text-decoration-shorthand': 5.0.3(postcss@8.5.9)
       '@csstools/postcss-trigonometric-functions': 5.0.2(postcss@8.5.9)
       '@csstools/postcss-unset-value': 5.0.0(postcss@8.5.9)
-      autoprefixer: 10.4.27(postcss@8.5.9)
+      autoprefixer: 10.5.0(postcss@8.5.9)
       browserslist: 4.28.2
       css-blank-pseudo: 8.0.1(postcss@8.5.9)
       css-has-pseudo: 8.0.0(postcss@8.5.9)
