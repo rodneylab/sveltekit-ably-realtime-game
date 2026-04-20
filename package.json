@@ -38,7 +38,7 @@
 		"ably": "^1.2.50",
 		"autoprefixer": "^10.4.27",
 		"commitlint": "^20.5.0",
-		"dompurify": "^3.3.3",
+		"dompurify": "^3.4.0",
 		"eslint": "^10.2.0",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-svelte": "^3.17.0",
