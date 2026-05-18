@@ -4,7 +4,7 @@ WORKDIR /app
 
 RUN apk update && apk upgrade && apk --no-cache add dash=0.5.13.1-r2
 SHELL ["/bin/ash", "-o", "pipefail", "-c"]
-RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.dashrc" SHELL="$(which dash)" PNPM_VERSION=11.0.9 dash -
+RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.dashrc" SHELL="$(which dash)" PNPM_VERSION=11.1.2 dash -
 
 ARG PUBLIC_ABLY_CHANNEL
 ARG PUBLIC_COLUMNS=4
@@ -20,7 +20,7 @@ RUN --mount=type=secret,id=ABLY_API_KEY,env=ABLY_API_KEY \
     && pnpm build \
     && pnpm prune --production
 
-FROM gcr.io/distroless/nodejs24-debian13@sha256:482fabdb0f0353417ab878532bb3bf45df925e3741c285a68038fb138b714cba
+FROM gcr.io/distroless/nodejs24-debian13@sha256:e70510b44870c5686983f2b11f22b884f2dfacf86aea69b6b0edb2ccb3f237f4
 COPY --from=build-env /app/build /app/build
 COPY --from=build-env /app/package.json /app/package.json
 COPY --from=build-env /app/node_modules /app/node_modules
