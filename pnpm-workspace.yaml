@@ -1,4 +1,4 @@
 minimumReleaseAge: 1440
-onlyBuiltDependencies:
-  - esbuild
-  - svelte-preprocess
+alowBuilds:
+  esbuild: true
+  svelte-preprocess: true
