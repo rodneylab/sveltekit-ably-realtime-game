@@ -67,7 +67,7 @@
 							name: player1Name,
 						};
 					} else if (type === 'accept-invitation') {
-						// other player has accpeted this players previously extended invitation
+						// other player has accepted this players previously extended invitation
 						const { sender, target, gameId } = data;
 						const body = new FormData();
 						body.append('player1', target);

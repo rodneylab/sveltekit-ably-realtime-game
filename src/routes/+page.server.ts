@@ -46,6 +46,7 @@ export const load: PageServerLoad = async function load({ cookies, locals }) {
 		const game = (await locals.redis.hget(REDIS_HASHSET_KEY, gameId)) as Game | null;
 		if (game) {
 			const { player1, player2 } = game;
+			// eslint-disable-next-line no-useless-assignment -- false positive: player used in subsequent statements
 			let player: PlayerDesignation = null;
 			if (player1 === clientId) {
 				player = 'player1';

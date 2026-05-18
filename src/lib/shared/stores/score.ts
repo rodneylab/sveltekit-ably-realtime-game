@@ -8,9 +8,9 @@ const store = derived<Readable<GridSquareDesignation[][]>, number[]>(grid, ($gri
 		// result is a two element array: [player1Score, player2Score]
 		([player1Total, player2Total], currentRow) =>
 			currentRow.reduce(
-				([player1RowAccumulator, player2RowAcumulator], currentSquare) => [
+				([player1RowAccumulator, player2RowAccumulator], currentSquare) => [
 					player1RowAccumulator + (currentSquare === 'player1' ? 1 : 0),
-					player2RowAcumulator + (currentSquare === 'player2' ? 1 : 0),
+					player2RowAccumulator + (currentSquare === 'player2' ? 1 : 0),
 				],
 				[player1Total, player2Total],
 			),
