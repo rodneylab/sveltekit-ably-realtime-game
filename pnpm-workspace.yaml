@@ -1,7 +1,4 @@
+minimumReleaseAge: 1440
 onlyBuiltDependencies:
-  - '@parcel/watcher'
   - esbuild
-  - netlify-cli
-  - sharp
   - svelte-preprocess
-  - unix-dgram
