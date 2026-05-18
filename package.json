@@ -1,10 +1,18 @@
 {
 	"name": "sqvuably",
 	"version": "0.0.1",
+	"private": true,
+	"description": "SvelteKit Ably Squares Realtime Multiplayer Game",
+	"bugs": {
+		"url": "https://github.com/rodneylab/sqvuably/issues"
+	},
 	"license": "BSD-3-Clause",
 	"author": "Rodney Lab <ask@rodneylab.com> (@rodneyLab)",
-	"description": "SvelteKit Ably Squares Realtime Multiplayer Game",
-	"private": true,
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/rodneylab/sqvuably"
+	},
+	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
@@ -66,14 +74,6 @@
 		"vite": "^8.0.13",
 		"vite-node": "^6.0.0"
 	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/rodneylab/sqvuably"
-	},
-	"bugs": {
-		"url": "https://github.com/rodneylab/sqvuably/issues"
-	},
-	"type": "module",
 	"peerDependencies": {
 		"@csstools/css-parser-algorithms": "^2.1.0",
 		"@csstools/css-tokenizer": "^2.1.0",
