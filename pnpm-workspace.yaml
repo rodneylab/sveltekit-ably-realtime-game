@@ -1,4 +1,7 @@
-minimumReleaseAge: 1440
 allowBuilds:
   esbuild: true
   svelte-preprocess: true
+blockExoticSubdeps: true
+minimumReleaseAge: 43200
+strictDepBuilds: true
+trustPolicy: no-downgrade
