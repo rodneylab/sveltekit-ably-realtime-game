@@ -4,6 +4,8 @@ allowBuilds:
 blockExoticSubdeps: true
 minimumReleaseAge: 43200
 minimumReleaseAgeExclude:
+  - '@commitlint/*'
+  - '@csstools/*'
   - '@oxc-parser/*'
   - '@rolldown/*'
   - '@rollup/*'
