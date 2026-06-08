@@ -3,5 +3,12 @@ allowBuilds:
   svelte-preprocess: true
 blockExoticSubdeps: true
 minimumReleaseAge: 43200
+minimumReleaseAgeExclude:
+  - '@oxc-parser/*'
+  - '@rolldown/*'
+  - '@rollup/*'
+  - '@typescript-eslint/*'
+  - rollup@4.60.4
+  - yaml@2.9.0
 strictDepBuilds: true
 trustPolicy: no-downgrade
