@@ -1,4 +1,33 @@
-minimumReleaseAge: 1440
 allowBuilds:
   esbuild: true
   svelte-preprocess: true
+blockExoticSubdeps: true
+minimumReleaseAge: 43200
+minimumReleaseAgeExclude:
+  - '@cacheable/*'
+  - '@commitlint/*'
+  - '@csstools/*'
+  - '@oxc-parser/*'
+  - '@oxc-project/*'
+  - '@rolldown/*'
+  - '@rollup/*'
+  - '@typescript-eslint/*'
+  - 'baseline-browser-mapping@2.10.30'
+  - 'cssdb@8.9.0'
+  - 'devalue@5.8.1'
+  - 'electron-to-chromium@1.5.357'
+  - 'esrap@2.2.9'
+  - 'node-releases@2.0.44'
+  - 'oxc-parser@0.130.0'
+  - 'postcss-color-functional-notation@8.0.4'
+  - 'postcss-double-position-gradients@7.0.1'
+  - 'postcss-lab-function@8.0.4'
+  - 'postcss-preset-env@11.3.0'
+  - 'rolldown@1.0.1'
+  - 'rollup@4.60.4'
+  - 'ws@8.20.1'
+  - 'yaml@2.9.0'
+strictDepBuilds: true
+trustPolicy: no-downgrade
+trustPolicyExclude:
+  - 'chokidar@4.0.3'
