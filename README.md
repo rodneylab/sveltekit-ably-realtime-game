@@ -13,7 +13,17 @@
 
 # sveltekit-ably-realtime-game
 
+Click any of the buttons below to start a new development environment to demo or contribute to the codebase without having to install anything on your machine:
+
+[![Open in VS Code](https://img.shields.io/badge/Open%20in-VS%20Code-blue?logo=visualstudiocode)](https://vscode.dev/github/rodneylab/sveltekit-ably-realtime-game)
+[![Open in Glitch](https://img.shields.io/badge/Open%20in-Glitch-blue?logo=glitch)](https://glitch.com/edit/#!/import/github/rodneylab/sveltekit-ably-realtime-game)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/rodneylab/sveltekit-ably-realtime-game)
+[![Edit in Codesandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/rodneylab/sveltekit-ably-realtime-game)
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/rodneylab/sveltekit-ably-realtime-game)
+[![Open in Repl.it](https://replit.com/badge/github/withastro/astro)](https://replit.com/github/rodneylab/sveltekit-ably-realtime-game)
+[![Open in Codeanywhere](https://codeanywhere.com/img/open-in-codeanywhere-btn.svg)](https://app.codeanywhere.com/#https://github.com/rodneylab/sveltekit-ably-realtime-game)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/rodneylab/sveltekit-ably-realtime-game)
+
 
 Demo code for creating serverless WebSockets in SvelteKit with Ably for a game or real-time chat. The code accompanies the <a href="https://rodneylab.com/sveltekit-ably/">post on using SvelteKit with Ably</a>. If you have any questions, please drop a comment at the bottom of that page.
 
