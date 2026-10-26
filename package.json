@@ -43,7 +43,7 @@
 		"@typescript-eslint/eslint-plugin": "^8.72.0",
 		"@typescript-eslint/parser": "^8.72.0",
 		"@typescript/native": "npm:typescript@^7.0.2",
-		"@upstash/redis": "^1.38.4",
+		"@upstash/redis": "^1.39.0",
 		"ably": "^1.2.50",
 		"autoprefixer": "^10.6.1",
 		"commitlint": "^21.2.3",
