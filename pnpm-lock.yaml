@@ -102,8 +102,8 @@ importers:
         specifier: ^6.0.1
         version: 6.0.1(postcss@8.5.28)
       postcss-custom-media:
-        specifier: ^12.0.1
-        version: 12.0.1(postcss@8.5.28)
+        specifier: ^12.0.2
+        version: 12.0.2(postcss@8.5.28)
       postcss-html:
         specifier: ^1.8.1
         version: 1.8.1
@@ -2806,8 +2806,8 @@ packages:
     peerDependencies:
       postcss: ^8.0.0
 
-  postcss-custom-media@12.0.1:
-    resolution: {integrity: sha512-66syE14+VeqkUf0rRX0bvbTCbNRJF132jD+ceo8th1dap2YJEAqpdh5uG98CE3IbgHT7m9XM0GIlOazNWqQdeA==}
+  postcss-custom-media@12.0.2:
+    resolution: {integrity: sha512-qn+su6Ux/TVzBSPYlRxC3Kq5DZNWBZt7y1wj38mnHT+whYnM21IxuYVKJ2E9qahBo0KGvcv/1rAB/F5iY1UiIA==}
     engines: {node: '>=20.19.0'}
     peerDependencies:
       postcss: ^8.4
@@ -5799,7 +5799,7 @@ snapshots:
       csso: 5.0.5
       postcss: 8.5.28
 
-  postcss-custom-media@12.0.1(postcss@8.5.28):
+  postcss-custom-media@12.0.2(postcss@8.5.28):
     dependencies:
       '@csstools/cascade-layer-name-parser': 3.0.2(@csstools/css-parser-algorithms@4.0.2(@csstools/css-tokenizer@4.0.2))(@csstools/css-tokenizer@4.0.2)
       '@csstools/css-parser-algorithms': 4.0.2(@csstools/css-tokenizer@4.0.2)
@@ -5973,7 +5973,7 @@ snapshots:
       postcss-color-functional-notation: 8.0.12(postcss@8.5.28)
       postcss-color-hex-alpha: 11.0.1(postcss@8.5.28)
       postcss-color-rebeccapurple: 11.0.1(postcss@8.5.28)
-      postcss-custom-media: 12.0.1(postcss@8.5.28)
+      postcss-custom-media: 12.0.2(postcss@8.5.28)
       postcss-custom-properties: 15.0.1(postcss@8.5.28)
       postcss-custom-selectors: 9.0.1(postcss@8.5.28)
       postcss-dir-pseudo-class: 10.0.0(postcss@8.5.28)
