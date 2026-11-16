@@ -27,7 +27,7 @@
 	},
 	"devDependencies": {
 		"@capsizecss/core": "^4.1.3",
-		"@capsizecss/metrics": "^4.3.0",
+		"@capsizecss/metrics": "^4.4.0",
 		"@commitlint/config-conventional": "^21.2.4",
 		"@csstools/css-parser-algorithms": "^4.0.2",
 		"@csstools/css-tokenizer": "^4.0.2",
