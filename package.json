@@ -46,7 +46,7 @@
 		"@upstash/redis": "^1.39.0",
 		"ably": "^1.2.50",
 		"autoprefixer": "^10.6.1",
-		"commitlint": "^21.2.3",
+		"commitlint": "^21.2.4",
 		"dompurify": "^3.4.17",
 		"esbuild": "^0.28.2",
 		"eslint": "^10.13.0",
